@@ -4,38 +4,586 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Zeya's Little Love Game 💙</title>
+    <title>Zeya 💙</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #4da6ff;
+            --blue2: #147de0;
+            --light: #a9dcff;
+            --bg: #020914;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100svh;
+
+            overflow: hidden;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(77, 166, 255, 0.20),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(20, 125, 224, 0.14),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(169, 220, 255, 0.08),
+                    transparent 25%
+                ),
+                var(--bg);
+        }
+
+        /* Background stars */
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+
+            background: #bde5ff;
+
+            box-shadow: 0 0 10px #4da6ff;
+
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .star:nth-child(1) {
+            left: 12%;
+            top: 18%;
+            animation-delay: .2s;
+        }
+
+        .star:nth-child(2) {
+            left: 83%;
+            top: 22%;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(3) {
+            left: 22%;
+            top: 67%;
+            animation-delay: 1.8s;
+        }
+
+        .star:nth-child(4) {
+            left: 76%;
+            top: 72%;
+            animation-delay: .7s;
+        }
+
+        .star:nth-child(5) {
+            left: 50%;
+            top: 12%;
+            animation-delay: 2s;
+        }
+
+        .star:nth-child(6) {
+            left: 92%;
+            top: 50%;
+            animation-delay: 1.3s;
+        }
+
+        .star:nth-child(7) {
+            left: 7%;
+            top: 45%;
+            animation-delay: 2.3s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: .25;
+                transform: scale(.7);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Main */
+
+        .screen {
+            min-height: 100vh;
+            min-height: 100svh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            position: relative;
+        }
+
+        /* Glow */
+
+        .glow {
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            background: rgba(77, 166, 255, .12);
+
+            filter: blur(65px);
+
+            animation: glowMove 5s ease-in-out infinite;
+
+            pointer-events: none;
+        }
+
+        @keyframes glowMove {
+            0%, 100% {
+                transform: scale(.85);
+                opacity: .5;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        /* Card */
+
+        .card {
+            width: 100%;
+            max-width: 390px;
+
+            padding: 42px 25px 27px;
+
+            text-align: center;
+
+            position: relative;
+            z-index: 2;
+
+            border-radius: 28px;
+
+            border: 1px solid rgba(141, 204, 255, .18);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.075),
+                    rgba(255,255,255,.025)
+                );
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,.55),
+                inset 0 1px 0 rgba(255,255,255,.08);
+        }
+
+        /* Heart */
+
+        .heart {
+            width: 82px;
+            height: 82px;
+
+            margin: 0 auto 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(77,166,255,.28),
+                    rgba(77,166,255,.04)
+                );
+
+            border: 1px solid rgba(141,204,255,.20);
+
+            font-size: 42px;
+
+            filter:
+                drop-shadow(0 0 12px rgba(77,166,255,.7));
+
+            animation: heartbeat 1.7s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.10);
+            }
+        }
+
+        /* Title */
+
+        h1 {
+            font-size: 54px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #b8e2ff,
+                    #4da6ff
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            text-shadow:
+                0 0 30px rgba(77,166,255,.18);
+        }
+
+        .subtitle {
+            color: #91aabe;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 31px;
+        }
+
+        /* Start button */
+
+        .start-button {
+            width: 100%;
+            max-width: 230px;
+
+            height: 58px;
+
+            border: 1px solid rgba(169,220,255,.45);
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #126fc8,
+                    #4da6ff
+                );
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 30px rgba(77,166,255,.25),
+                inset 0 1px 0 rgba(255,255,255,.30);
+
+            transition: .25s ease;
+        }
+
+        .start-button span {
+            margin-left: 7px;
+        }
+
+        .start-button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 12px 40px rgba(77,166,255,.45),
+                0 0 25px rgba(77,166,255,.18),
+                inset 0 1px 0 rgba(255,255,255,.35);
+        }
+
+        .start-button:active {
+            transform: scale(.95);
+        }
+
+        /* Creator */
+
+        .creator {
+            margin-top: 28px;
+
+            color: #536c81;
+
+            font-size: 8px;
+
+            letter-spacing: 1.4px;
+
+            font-weight: 700;
+        }
+
+        .creator a {
+            color: #7faed4;
+
+            text-decoration: none;
+
+            transition: .2s ease;
+        }
+
+        .creator a:hover {
+            color: #b8e2ff;
+
+            text-shadow:
+                0 0 12px rgba(77,166,255,.7);
+        }
+
+        /* Tiny bottom line */
+
+        .line {
+            width: 45px;
+            height: 2px;
+
+            margin: 17px auto 0;
+
+            border-radius: 10px;
+
+            background: #4da6ff;
+
+            box-shadow:
+                0 0 12px rgba(77,166,255,.7);
+        }
+
+        /* Mobile */
+
+        @media (max-width: 480px) {
+
+            .screen {
+                padding: 18px;
+            }
+
+            .card {
+                padding: 36px 20px 25px;
+
+                border-radius: 25px;
+            }
+
+            .heart {
+                width: 74px;
+                height: 74px;
+
+                font-size: 38px;
+
+                margin-bottom: 18px;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .subtitle {
+                font-size: 10px;
+            }
+
+            .start-button {
+                max-width: 210px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <main class="start-screen">
+    <!-- Background stars -->
+    <div class="stars">
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+    </div>
 
-        <div class="heart">💙</div>
+    <main class="screen">
 
-        <h1>Zeya</h1>
+        <div class="glow"></div>
 
-        <p class="subtitle">A Little Surprise For You ✨</p>
+        <section class="card">
 
-        <button class="start-button" onclick="startGame()">
-            START
-            <span>❤️</span>
-        </button>
+            <div class="heart">
+                💙
+            </div>
 
-        <p class="creator">
-            Created by
-            <a href="https://www.instagram.com/be.like_sahil?stkn=MTF3eWhrZ3o1NWdzeQ=="
-               target="_blank"
-               rel="noopener noreferrer">
-                @be.like_sahil
-            </a>
-        </p>
+            <h1>Zeya</h1>
+
+            <p class="subtitle">
+                A Little Surprise<br>
+                Made Just For You ✨
+            </p>
+
+            <button
+                class="start-button"
+                onclick="startGame()"
+            >
+                START
+                <span>❤️</span>
+            </button>
+
+            <div class="creator">
+                Created by
+                <a
+                    href="https://www.instagram.com/be.like_sahil/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @be.like_sahil
+                </a>
+            </div>
+
+            <div class="line"></div>
+
+        </section>
 
     </main>
 
-    <script src="script.js"></script>
+    <script>
+
+        function startGame() {
+
+            const button =
+                document.querySelector(".start-button");
+
+            button.innerHTML = "GET READY... 💙";
+            button.disabled = true;
+
+            setTimeout(function() {
+
+                document.body.innerHTML = `
+                    <main class="screen">
+
+                        <div class="glow"></div>
+
+                        <section class="card">
+
+                            <div class="heart">
+                                ✨
+                            </div>
+
+                            <h1>Ready?</h1>
+
+                            <p class="subtitle">
+                                Your little love journey<br>
+                                is about to begin 💙
+                            </p>
+
+                            <button
+                                class="start-button"
+                                onclick="beginQuestions()"
+                            >
+                                LET'S GO
+                                <span>💙</span>
+                            </button>
+
+                            <div class="creator">
+                                Created by
+                                <a
+                                    href="https://www.instagram.com/be.like_sahil/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    @be.like_sahil
+                                </a>
+                            </div>
+
+                        </section>
+
+                    </main>
+                `;
+
+            }, 700);
+        }
+
+
+        function beginQuestions() {
+
+            document.body.innerHTML = `
+                <main class="screen">
+
+                    <div class="glow"></div>
+
+                    <section class="card">
+
+                        <div class="heart">
+                            🍫
+                        </div>
+
+                        <h1>Question 1</h1>
+
+                        <p class="subtitle">
+                            Zeya's favourite food is...
+                        </p>
+
+                        <button
+                            class="start-button"
+                            onclick="alert('Correct! 💙')"
+                        >
+                            🍫 Chocolate
+                        </button>
+
+                        <div class="creator">
+                            Created by
+                            <a
+                                href="https://www.instagram.com/be.like_sahil/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                @be.like_sahil
+                            </a>
+                        </div>
+
+                    </section>
+
+                </main>
+            `;
+        }
+
+    </script>
 
 </body>
 </html>
