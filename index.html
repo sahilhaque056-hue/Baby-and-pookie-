@@ -2,72 +2,84 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zeya 💙</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-:root{
---blue:#4da6ff;
---light:#b9e3ff;
---bg:#020914;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html,body{
-width:100%;
-min-height:100%;
+    width:100%;
+    min-height:100%;
 }
 
 body{
-min-height:100vh;
-min-height:100svh;
-overflow:hidden;
-font-family:Arial,Helvetica,sans-serif;
-color:white;
-background:
-radial-gradient(circle at 50% 30%,rgba(77,166,255,.2),transparent 32%),
-radial-gradient(circle at 10% 90%,rgba(20,109,204,.14),transparent 30%),
-#020914;
+    min-height:100vh;
+    min-height:100svh;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    color:white;
+    background:
+        radial-gradient(circle at 50% 15%,rgba(45,145,255,.20),transparent 32%),
+        radial-gradient(circle at 10% 90%,rgba(25,100,210,.14),transparent 30%),
+        #020914;
 }
 
 button{
-font-family:inherit;
+    font-family:inherit;
 }
 
 .background{
-position:fixed;
-inset:0;
-overflow:hidden;
-pointer-events:none;
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
 }
 
 .orb{
-position:absolute;
-width:270px;
-height:270px;
-border-radius:50%;
-background:rgba(77,166,255,.08);
-filter:blur(70px);
-animation:orb 7s ease-in-out infinite;
+    position:absolute;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:rgba(60,150,255,.08);
+    filter:blur(75px);
+    animation:orb 7s ease-in-out infinite;
 }
 
-.orb.one{left:-120px;top:10%}
-.orb.two{right:-120px;bottom:5%;animation-delay:2s}
+.orb.one{
+    left:-120px;
+    top:5%;
+}
+
+.orb.two{
+    right:-120px;
+    bottom:5%;
+    animation-delay:2s;
+}
 
 @keyframes orb{
-0%,100%{transform:scale(.85);opacity:.45}
-50%{transform:scale(1.2);opacity:.9}
+    0%,100%{
+        transform:scale(.85);
+        opacity:.4;
+    }
+    50%{
+        transform:scale(1.2);
+        opacity:.9;
+    }
 }
 
 .star{
-position:absolute;
-width:3px;
-height:3px;
-border-radius:50%;
-background:#bce5ff;
-box-shadow:0 0 10px #4da6ff;
-animation:twinkle 3s infinite;
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#c5e8ff;
+    box-shadow:0 0 10px #4da6ff;
+    animation:twinkle 3s infinite;
 }
 
 .s1{left:10%;top:18%}
@@ -79,356 +91,594 @@ animation:twinkle 3s infinite;
 .s7{left:6%;top:48%;animation-delay:1.1s}
 
 @keyframes twinkle{
-0%,100%{opacity:.2;transform:scale(.7)}
-50%{opacity:1;transform:scale(1.5)}
+    0%,100%{
+        opacity:.2;
+        transform:scale(.7);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.5);
+    }
 }
 
 .screen{
-min-height:100vh;
-min-height:100svh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:16px;
-position:relative;
+    min-height:100vh;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    position:relative;
 }
 
 .card{
-width:100%;
-max-width:410px;
-padding:32px 21px 25px;
-position:relative;
-z-index:5;
-text-align:center;
-border-radius:28px;
-border:1px solid rgba(151,210,255,.18);
-background:linear-gradient(
-145deg,
-rgba(255,255,255,.075),
-rgba(255,255,255,.025)
-);
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
-box-shadow:
-0 30px 90px rgba(0,0,0,.58),
-inset 0 1px 0 rgba(255,255,255,.08);
-animation:cardIn .55s ease;
+    width:100%;
+    max-width:410px;
+    max-height:94vh;
+    overflow-y:auto;
+    padding:30px 18px 23px;
+    text-align:center;
+    border-radius:28px;
+    border:1px solid rgba(151,210,255,.18);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.58),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    animation:cardIn .5s ease;
 }
 
 @keyframes cardIn{
-from{opacity:0;transform:translateY(18px) scale(.97)}
-to{opacity:1;transform:translateY(0) scale(1)}
+    from{
+        opacity:0;
+        transform:translateY(18px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
 }
 
 .heart{
-width:78px;
-height:78px;
-margin:0 auto 19px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-font-size:39px;
-background:radial-gradient(
-circle,
-rgba(77,166,255,.28),
-rgba(77,166,255,.03)
-);
-border:1px solid rgba(141,204,255,.22);
-box-shadow:0 0 30px rgba(77,166,255,.14);
-animation:beat 1.7s infinite;
+    width:76px;
+    height:76px;
+    margin:0 auto 18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:38px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(77,166,255,.28),
+            rgba(77,166,255,.03)
+        );
+    border:1px solid rgba(141,204,255,.22);
+    box-shadow:0 0 30px rgba(77,166,255,.14);
+    animation:beat 1.7s infinite;
 }
 
 @keyframes beat{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.1)}
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.1);
+    }
 }
 
 h1{
-font-size:50px;
-line-height:1;
-font-weight:900;
-letter-spacing:2px;
-margin-bottom:13px;
-background:linear-gradient(
-135deg,
-#fff,
-#b9e3ff,
-#4da6ff
-);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+    font-size:48px;
+    line-height:1;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:13px;
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #b9e3ff,
+            #4da6ff
+        );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 .subtitle{
-color:#91abc0;
-font-size:11px;
-line-height:1.8;
-letter-spacing:1.2px;
-margin-bottom:27px;
+    color:#91abc0;
+    font-size:11px;
+    line-height:1.8;
+    letter-spacing:1.2px;
+    margin-bottom:25px;
 }
 
 .main-button{
-width:100%;
-max-width:235px;
-min-height:58px;
-border-radius:17px;
-border:1px solid rgba(170,221,255,.42);
-background:linear-gradient(135deg,#126fc8,#4da6ff);
-color:white;
-font-size:12px;
-font-weight:900;
-letter-spacing:3px;
-cursor:pointer;
-box-shadow:
-0 10px 32px rgba(77,166,255,.25),
-inset 0 1px 0 rgba(255,255,255,.3);
-transition:.25s;
+    width:100%;
+    max-width:235px;
+    min-height:57px;
+    border-radius:17px;
+    border:1px solid rgba(170,221,255,.42);
+    background:
+        linear-gradient(
+            135deg,
+            #126fc8,
+            #4da6ff
+        );
+    color:white;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2.5px;
+    cursor:pointer;
+    box-shadow:
+        0 10px 32px rgba(77,166,255,.25),
+        inset 0 1px 0 rgba(255,255,255,.3);
+    transition:.25s;
 }
 
 .main-button:hover{
-transform:translateY(-4px) scale(1.02);
-box-shadow:0 15px 42px rgba(77,166,255,.42);
+    transform:translateY(-4px) scale(1.02);
+    box-shadow:
+        0 15px 42px rgba(77,166,255,.42);
 }
 
 .main-button:active{
-transform:scale(.95);
+    transform:scale(.95);
 }
 
 .creator{
-margin-top:24px;
-color:#526c82;
-font-size:7px;
-font-weight:800;
-letter-spacing:1.4px;
+    margin-top:23px;
+    color:#526c82;
+    font-size:7px;
+    font-weight:800;
+    letter-spacing:1.4px;
 }
 
 .creator a{
-color:#7faed4;
-text-decoration:none;
+    color:#7faed4;
+    text-decoration:none;
 }
 
 .progress{
-color:#6398c2;
-font-size:8px;
-font-weight:900;
-letter-spacing:2px;
-margin-bottom:14px;
+    color:#6398c2;
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:13px;
 }
 
 .progress-line{
-height:4px;
-width:100%;
-border-radius:20px;
-background:rgba(255,255,255,.07);
-margin-bottom:20px;
-overflow:hidden;
+    width:100%;
+    height:4px;
+    border-radius:20px;
+    background:rgba(255,255,255,.07);
+    margin-bottom:19px;
+    overflow:hidden;
 }
 
 .progress-fill{
-height:100%;
-background:linear-gradient(90deg,#126fc8,#4da6ff);
-box-shadow:0 0 12px rgba(77,166,255,.7);
+    height:100%;
+    background:linear-gradient(90deg,#126fc8,#4da6ff);
+    box-shadow:0 0 12px rgba(77,166,255,.7);
 }
 
 .question-title{
-font-size:24px;
-line-height:1.3;
-margin-bottom:22px;
+    font-size:22px;
+    line-height:1.3;
+    margin-bottom:20px;
 }
 
 .answers{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
 
 .answer{
-min-height:68px;
-border-radius:17px;
-border:1px solid rgba(141,204,255,.15);
-background:linear-gradient(
-145deg,
-rgba(255,255,255,.065),
-rgba(255,255,255,.018)
-);
-color:#e9f6ff;
-cursor:pointer;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:5px;
-transition:.22s;
+    min-height:66px;
+    border-radius:17px;
+    border:1px solid rgba(141,204,255,.15);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.018)
+        );
+    color:#e9f6ff;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    transition:.22s;
 }
 
 .answer:hover{
-transform:translateY(-3px);
-border-color:rgba(77,166,255,.55);
-background:rgba(77,166,255,.12);
+    transform:translateY(-3px);
+    border-color:rgba(77,166,255,.55);
 }
 
 .answer.correct{
-border-color:#4da6ff;
-background:rgba(77,166,255,.23);
-box-shadow:0 0 30px rgba(77,166,255,.35);
+    border-color:#4da6ff;
+    background:rgba(77,166,255,.23);
+    box-shadow:0 0 30px rgba(77,166,255,.35);
 }
 
 .answer.wrong{
-animation:shake .3s;
+    animation:shake .3s;
 }
 
 @keyframes shake{
-0%,100%{transform:translateX(0)}
-25%{transform:translateX(-6px)}
-75%{transform:translateX(6px)}
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-6px)}
+    75%{transform:translateX(6px)}
 }
 
 .answer-emoji{
-font-size:21px;
+    font-size:21px;
 }
 
 .answer-text{
-font-size:8px;
-font-weight:800;
+    font-size:8px;
+    font-weight:800;
 }
-
-.love-text{
-color:#c1dff3;
-font-size:12px;
-line-height:2;
-margin-bottom:24px;
-}
-
-.highlight{
-color:#8dccff;
-font-size:15px;
-font-weight:900;
-}
-
-/* MINI GAME */
 
 .game-area{
-position:relative;
-height:310px;
-width:100%;
-margin-top:12px;
-border-radius:20px;
-border:1px solid rgba(141,204,255,.14);
-background:rgba(0,10,22,.35);
-overflow:hidden;
+    position:relative;
+    height:285px;
+    width:100%;
+    margin-top:8px;
+    border-radius:20px;
+    border:1px solid rgba(141,204,255,.14);
+    background:rgba(0,10,22,.35);
+    overflow:hidden;
 }
 
 .game-heart{
-position:absolute;
-width:54px;
-height:54px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:27px;
-background:rgba(77,166,255,.13);
-border:1px solid rgba(141,204,255,.28);
-box-shadow:0 0 20px rgba(77,166,255,.2);
-cursor:pointer;
-user-select:none;
--webkit-tap-highlight-color:transparent;
-animation:heartAppear .25s ease;
+    position:absolute;
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    background:rgba(77,166,255,.13);
+    border:1px solid rgba(141,204,255,.28);
+    box-shadow:0 0 20px rgba(77,166,255,.2);
+    cursor:pointer;
+    user-select:none;
+    animation:heartAppear .25s ease;
 }
 
 @keyframes heartAppear{
-from{transform:scale(.3);opacity:0}
-to{transform:scale(1);opacity:1}
+    from{
+        transform:scale(.3);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
 }
 
 .score{
-color:#9bd5ff;
-font-size:10px;
-font-weight:900;
-letter-spacing:2px;
-margin-bottom:12px;
+    color:#9bd5ff;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
 }
 
 .tip{
-color:#667f94;
-font-size:8px;
-letter-spacing:1px;
-margin-top:12px;
+    color:#667f94;
+    font-size:8px;
+    letter-spacing:1px;
+    margin-top:10px;
 }
 
-.final-heart{
-font-size:48px;
+/* MEMORIES */
+
+.memory-title{
+    font-size:29px;
+    font-weight:900;
+    margin-bottom:7px;
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #9bd5ff,
+            #4da6ff
+        );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
+
+.memory-subtitle{
+    color:#7893a8;
+    font-size:8px;
+    letter-spacing:1.7px;
+    margin-bottom:18px;
+}
+
+.memory-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:19px;
+}
+
+.memory-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    border:1px solid rgba(141,204,255,.16);
+    background:rgba(0,10,22,.45);
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+    animation:memoryIn .55s ease both;
+}
+
+.memory-card:nth-child(2){
+    animation-delay:.12s;
+}
+
+.memory-card:nth-child(3){
+    animation-delay:.24s;
+}
+
+@keyframes memoryIn{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.memory-image{
+    width:100%;
+    height:220px;
+    display:block;
+    object-fit:cover;
+}
+
+.memory-overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:85px;
+    background:
+        linear-gradient(
+            transparent,
+            rgba(1,8,17,.95)
+        );
+}
+
+.memory-caption{
+    position:relative;
+    padding:10px 13px 13px;
+    text-align:left;
+    margin-top:-15px;
+    z-index:2;
+}
+
+.memory-caption strong{
+    display:block;
+    color:#b9e3ff;
+    font-size:10px;
+    letter-spacing:1px;
+    margin-bottom:4px;
+}
+
+.memory-caption span{
+    color:#7892a5;
+    font-size:8px;
+}
+
+/* LETTER */
+
+.envelope{
+    width:145px;
+    height:105px;
+    margin:0 auto 24px;
+    position:relative;
+    animation:floatEnvelope 2.5s ease-in-out infinite;
+}
+
+@keyframes floatEnvelope{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+.envelope-body{
+    position:absolute;
+    inset:0;
+    border-radius:10px;
+    background:linear-gradient(145deg,#146fc4,#4da6ff);
+    box-shadow:0 15px 35px rgba(77,166,255,.28);
+}
+
+.envelope-flap{
+    position:absolute;
+    left:0;
+    top:0;
+    width:0;
+    height:0;
+    border-left:72px solid transparent;
+    border-right:72px solid transparent;
+    border-top:52px solid #8acbff;
+}
+
+.envelope-heart{
+    position:absolute;
+    z-index:3;
+    left:50%;
+    top:48%;
+    transform:translate(-50%,-50%);
+    font-size:30px;
+}
+
+.letter{
+    padding:19px 15px;
+    margin-bottom:21px;
+    border-radius:18px;
+    border:1px solid rgba(141,204,255,.18);
+    background:rgba(3,18,34,.55);
+}
+
+.letter-title{
+    color:#9bd5ff;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:14px;
+}
+
+.letter p{
+    color:#b9cfdf;
+    font-size:10px;
+    line-height:2;
+}
+
+/* FLOATING HEARTS */
 
 .floating-heart{
-position:fixed;
-bottom:-30px;
-font-size:20px;
-pointer-events:none;
-z-index:50;
-animation:floatUp 4s linear forwards;
+    position:fixed;
+    bottom:-30px;
+    font-size:20px;
+    pointer-events:none;
+    z-index:50;
+    animation:floatUp 4s linear forwards;
 }
 
 @keyframes floatUp{
-0%{
-opacity:0;
-transform:translateY(0) scale(.7);
+    0%{
+        opacity:0;
+        transform:translateY(0) scale(.7);
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:
+            translateY(-105vh)
+            rotate(25deg)
+            scale(1.3);
+    }
 }
-15%{opacity:1}
-100%{
-opacity:0;
-transform:translateY(-105vh) rotate(25deg) scale(1.3);
+
+/* MUSIC INDICATOR */
+
+.music{
+    position:fixed;
+    right:13px;
+    top:13px;
+    z-index:100;
+    display:none;
+    align-items:center;
+    gap:7px;
+    padding:8px 11px;
+    border-radius:20px;
+    border:1px solid rgba(141,204,255,.20);
+    background:rgba(3,15,29,.72);
+    backdrop-filter:blur(12px);
+    color:#8dccff;
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:1px;
 }
+
+.music.show{
+    display:flex;
+}
+
+.music-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#4da6ff;
+    box-shadow:0 0 10px #4da6ff;
+    animation:musicPulse .8s infinite alternate;
+}
+
+@keyframes musicPulse{
+    from{transform:scale(.7)}
+    to{transform:scale(1.3)}
 }
 
 @media(max-width:480px){
 
-.card{
-padding:29px 17px 23px;
-border-radius:25px;
-}
+    .card{
+        padding:28px 16px 22px;
+    }
 
-h1{
-font-size:46px;
-}
+    h1{
+        font-size:44px;
+    }
 
-.question-title{
-font-size:22px;
+    .memory-image{
+        height:215px;
+    }
 }
-
-.answer{
-min-height:65px;
-}
-
-.game-area{
-height:300px;
-}
-
-.main-button{
-max-width:215px;
-}
-}
-
 </style>
 </head>
 
 <body>
 
 <div class="background">
-<div class="orb one"></div>
-<div class="orb two"></div>
 
-<span class="star s1"></span>
-<span class="star s2"></span>
-<span class="star s3"></span>
-<span class="star s4"></span>
-<span class="star s5"></span>
-<span class="star s6"></span>
-<span class="star s7"></span>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+
+    <span class="star s1"></span>
+    <span class="star s2"></span>
+    <span class="star s3"></span>
+    <span class="star s4"></span>
+    <span class="star s5"></span>
+    <span class="star s6"></span>
+    <span class="star s7"></span>
+
 </div>
 
+
+<!-- MUSIC -->
+
+<audio
+    id="loveSong"
+    preload="auto"
+    loop>
+    <source src="sahil%20love.mp3" type="audio/mpeg">
+</audio>
+
+
+<div class="music" id="musicIndicator">
+
+    <span class="music-dot"></span>
+
+    <span>NOW PLAYING 🎵</span>
+
+</div>
+
+
 <div id="app"></div>
+
 
 <script>
 
@@ -437,10 +687,49 @@ max-width:215px;
 ========================= */
 
 const instagram =
-"https://www.instagram.com/be.like_sahil/";
+    "https://www.instagram.com/be.like_sahil/";
+
 
 const app =
-document.getElementById("app");
+    document.getElementById("app");
+
+
+const song =
+    document.getElementById("loveSong");
+
+
+const musicIndicator =
+    document.getElementById("musicIndicator");
+
+
+/* =========================
+   MUSIC
+========================= */
+
+function startMusic(){
+
+    song.volume = 0.75;
+
+    const playPromise =
+        song.play();
+
+    if(playPromise !== undefined){
+
+        playPromise
+        .then(()=>{
+
+            musicIndicator.classList.add("show");
+
+        })
+        .catch(()=>{
+
+            musicIndicator.classList.remove("show");
+
+        });
+
+    }
+
+}
 
 
 /* =========================
@@ -449,108 +738,132 @@ document.getElementById("app");
 
 function creator(){
 
-return `
-<div class="creator">
-Created by
-<a href="${instagram}"
-target="_blank"
-rel="noopener noreferrer">
-@be.like_sahil
-</a>
-</div>
-`;
+    return `
+        <div class="creator">
+
+            Created by
+
+            <a
+                href="${instagram}"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                @be.like_sahil
+
+            </a>
+
+        </div>
+    `;
 
 }
 
 
 /* =========================
-   FLOATING HEARTS
+   HEART EFFECT
 ========================= */
 
 function hearts(){
 
-const emojis=[
-"💙","🩵","✨","💫","💙"
-];
+    const emojis =
+        ["💙","🩵","✨","💫","💙"];
 
-for(let i=0;i<14;i++){
+    for(let i=0;i<14;i++){
 
-setTimeout(()=>{
+        setTimeout(()=>{
 
-const h=
-document.createElement("div");
+            const h =
+                document.createElement("div");
 
-h.className=
-"floating-heart";
+            h.className =
+                "floating-heart";
 
-h.innerHTML=
-emojis[
-Math.floor(
-Math.random()*emojis.length
-)
-];
+            h.innerHTML =
+                emojis[
+                    Math.floor(
+                        Math.random() *
+                        emojis.length
+                    )
+                ];
 
-h.style.left=
-Math.random()*100+"%";
+            h.style.left =
+                Math.random()*100 + "%";
 
-h.style.animationDuration=
-(3+Math.random()*2)+"s";
+            h.style.animationDuration =
+                (3 + Math.random()*2) + "s";
 
-document.body.appendChild(h);
+            document.body.appendChild(h);
 
-setTimeout(()=>{
-h.remove();
-},5000);
+            setTimeout(()=>{
+                h.remove();
+            },5000);
 
-},i*120);
+        },i*120);
 
-}
+    }
 
 }
 
 
 /* =========================
-   START
+   START SCREEN
 ========================= */
 
 function start(){
 
-app.innerHTML=`
+    app.innerHTML = `
 
-<main class="screen">
+        <main class="screen">
 
-<section class="card">
+            <section class="card">
 
-<div class="heart">
-💙
-</div>
+                <div class="heart">
+                    💙
+                </div>
 
-<h1>Zeya</h1>
+                <h1>
+                    Zeya
+                </h1>
 
-<p class="subtitle">
-A Little Surprise<br>
-Made Just For You ✨
-</p>
+                <p class="subtitle">
 
-<button
-class="main-button"
-id="start">
-START ❤️
-</button>
+                    A Little Surprise<br>
+                    Made Just For You ✨
 
-${creator()}
+                </p>
 
-</section>
+                <button
+                    class="main-button"
+                    id="startBtn">
 
-</main>
-`;
+                    START ❤️
 
-document
-.getElementById("start")
-.addEventListener(
-"click",
-welcome
-);
+                </button>
+
+                ${creator()}
+
+            </section>
+
+        </main>
+    `;
+
+
+    document
+        .getElementById("startBtn")
+        .onclick = function(){
+
+            /*
+             * IMPORTANT:
+             * Music starts here because
+             * this is a real user click.
+             */
+
+            startMusic();
+
+            hearts();
+
+            welcome();
+
+        };
 
 }
 
@@ -561,44 +874,50 @@ welcome
 
 function welcome(){
 
-hearts();
+    app.innerHTML = `
 
-app.innerHTML=`
+        <main class="screen">
 
-<main class="screen">
+            <section class="card">
 
-<section class="card">
+                <div class="heart">
+                    ✨
+                </div>
 
-<div class="heart">
-✨
-</div>
+                <h1>
+                    Hey Zeya
+                </h1>
 
-<h1>Hey Zeya</h1>
+                <p class="subtitle">
 
-<p class="subtitle">
-Ready for a tiny little<br>
-challenge? 💙
-</p>
+                    Ready for a tiny little<br>
+                    challenge? 💙
 
-<button
-class="main-button"
-id="play">
-LET'S PLAY 💙
-</button>
+                </p>
 
-${creator()}
+                <button
+                    class="main-button"
+                    id="playBtn">
 
-</section>
+                    LET'S PLAY 💙
 
-</main>
-`;
+                </button>
 
-document
-.getElementById("play")
-.addEventListener(
-"click",
-()=>question(1)
-);
+                ${creator()}
+
+            </section>
+
+        </main>
+    `;
+
+
+    document
+        .getElementById("playBtn")
+        .onclick = () => {
+
+            question(1);
+
+        };
 
 }
 
@@ -607,62 +926,62 @@ document
    QUESTIONS
 ========================= */
 
-const questions=[
+const questions = [
 
-{
-emoji:"🍫",
-title:"What's Zeya's favourite food?",
-answers:[
-["🍕","Pizza",false],
-["🍫","Chocolate",true],
-["🍔","Burger",false],
-["🍟","Fries",false]
-]
-},
+    {
+        emoji:"🍫",
+        title:"What's Zeya's favourite food?",
+        answers:[
+            ["🍕","Pizza",false],
+            ["🍫","Chocolate",true],
+            ["🍔","Burger",false],
+            ["🍟","Fries",false]
+        ]
+    },
 
-{
-emoji:"🍜",
-title:"Another favourite food?",
-answers:[
-["🍰","Cake",false],
-["🍣","Sushi",false],
-["🍜","Maggie",true],
-["🌮","Taco",false]
-]
-},
+    {
+        emoji:"🍜",
+        title:"Another favourite food?",
+        answers:[
+            ["🍰","Cake",false],
+            ["🍣","Sushi",false],
+            ["🍜","Maggie",true],
+            ["🌮","Taco",false]
+        ]
+    },
 
-{
-emoji:"💙",
-title:"What's Zeya's favourite colour?",
-answers:[
-["❤️","Red",false],
-["💚","Green",false],
-["💙","Blue",true],
-["💜","Purple",false]
-]
-},
+    {
+        emoji:"💙",
+        title:"What's Zeya's favourite colour?",
+        answers:[
+            ["❤️","Red",false],
+            ["💚","Green",false],
+            ["💙","Blue",true],
+            ["💜","Purple",false]
+        ]
+    },
 
-{
-emoji:"🎂",
-title:"Zeya's birthday month?",
-answers:[
-["❄️","January",false],
-["🌸","March",true],
-["☀️","July",false],
-["🎄","December",false]
-]
-},
+    {
+        emoji:"🎂",
+        title:"Zeya's birthday month?",
+        answers:[
+            ["❄️","January",false],
+            ["🌸","March",true],
+            ["☀️","July",false],
+            ["🎄","December",false]
+        ]
+    },
 
-{
-emoji:"🎵",
-title:"Zeya's favourite song?",
-answers:[
-["🎶","Perfect",false],
-["🎧","Ishq Ke Jaan",true],
-["🎵","Until I Found You",false],
-["🎤","Shape Of You",false]
-]
-}
+    {
+        emoji:"🎵",
+        title:"Zeya's favourite song?",
+        answers:[
+            ["🎶","Perfect",false],
+            ["🎧","Ishq Ke Jaan",true],
+            ["🎵","Until I Found You",false],
+            ["🎤","Shape Of You",false]
+        ]
+    }
 
 ];
 
@@ -673,472 +992,182 @@ answers:[
 
 function question(number){
 
-const q=
-questions[number-1];
-
-let html="";
-
-q.answers.forEach(
-(a,i)=>{
-
-html+=`
-
-<button
-class="answer"
-data-correct="${a[2]}"
->
-
-<span class="answer-emoji">
-${a[0]}
-</span>
-
-<span class="answer-text">
-${a[1]}
-</span>
-
-</button>
-
-`;
-
-});
+    const q =
+        questions[number-1];
 
 
-const percent=
-((number-1)/5)*100;
-
-app.innerHTML=`
-
-<main class="screen">
-
-<section class="card">
-
-<div class="progress">
-QUESTION
-${String(number).padStart(2,"0")}
- / 05
-</div>
-
-<div class="progress-line">
-
-<div
-class="progress-fill"
-style="width:${percent}%">
-</div>
-
-</div>
-
-<div class="heart">
-${q.emoji}
-</div>
-
-<h1 class="question-title">
-${q.title}
-</h1>
-
-<div class="answers">
-${html}
-</div>
-
-${creator()}
-
-</section>
-
-</main>
-`;
+    let answers = "";
 
 
-document
-.querySelectorAll(".answer")
-.forEach(btn=>{
+    q.answers.forEach(a => {
 
-btn.addEventListener(
-"click",
-function(){
+        answers += `
 
-const correct=
-this.dataset.correct==="true";
+            <button
+                class="answer"
+                data-correct="${a[2]}">
 
-if(!correct){
+                <span class="answer-emoji">
+                    ${a[0]}
+                </span>
 
-this.classList.add("wrong");
+                <span class="answer-text">
+                    ${a[1]}
+                </span>
 
-setTimeout(()=>{
-this.classList.remove("wrong");
-},400);
+            </button>
 
-return;
-}
+        `;
 
-this.classList.add("correct");
-
-hearts();
-
-setTimeout(()=>{
-
-if(number<5){
-
-question(number+1);
-
-}else{
-
-miniGameIntro();
-
-}
-
-},500);
-
-});
-
-});
-
-}
+    });
 
 
-/* =========================
-   MINI GAME INTRO
-========================= */
+    const progress =
+        ((number-1)/5)*100;
 
-function miniGameIntro(){
 
-hearts();
+    app.innerHTML = `
 
-app.innerHTML=`
+        <main class="screen">
 
-<main class="screen">
+            <section class="card">
 
-<section class="card">
+                <div class="progress">
 
-<div class="heart">
-💙
-</div>
+                    QUESTION
+                    ${String(number).padStart(2,"0")}
+                    / 05
 
-<h1>One More!</h1>
+                </div>
 
-<p class="subtitle">
-Quiz complete! 🥹<br><br>
-Now catch <b>5 hearts</b><br>
-to unlock your surprise. ✨
-</p>
+                <div class="progress-line">
 
-<button
-class="main-button"
-id="catchBtn">
-CATCH THE HEARTS 💙
-</button>
+                    <div
+                        class="progress-fill"
+                        style="width:${progress}%">
 
-${creator()}
+                    </div>
 
-</section>
+                </div>
 
-</main>
-`;
+                <div class="heart">
+                    ${q.emoji}
+                </div>
 
-document
-.getElementById("catchBtn")
-.addEventListener(
-"click",
-startMiniGame
-);
+                <h1 class="question-title">
+                    ${q.title}
+                </h1>
+
+                <div class="answers">
+                    ${answers}
+                </div>
+
+                ${creator()}
+
+            </section>
+
+        </main>
+    `;
+
+
+    document
+        .querySelectorAll(".answer")
+        .forEach(btn => {
+
+            btn.onclick = function(){
+
+                if(
+                    this.dataset.correct !== "true"
+                ){
+
+                    this.classList.add("wrong");
+
+                    setTimeout(()=>{
+
+                        this.classList.remove("wrong");
+
+                    },400);
+
+                    return;
+
+                }
+
+
+                this.classList.add("correct");
+
+                hearts();
+
+
+                setTimeout(()=>{
+
+                    if(number < 5){
+
+                        question(number+1);
+
+                    }else{
+
+                        gameIntro();
+
+                    }
+
+                },500);
+
+            };
+
+        });
 
 }
 
 
 /* =========================
-   MINI GAME
+   GAME INTRO
 ========================= */
 
-let score=0;
-let gameTimer;
+function gameIntro(){
+
+    app.innerHTML = `
+
+        <main class="screen">
+
+            <section class="card">
+
+                <div class="heart">
+                    💙
+                </div>
+
+                <h1>
+                    One More!
+                </h1>
+
+                <p class="subtitle">
+
+                    Quiz complete! 🥹<br><br>
+
+                    Catch 5 hearts to unlock<br>
+                    something special. ✨
+
+                </p>
+
+                <button
+                    class="main-button"
+                    id="catchBtn">
+
+                    CATCH HEARTS 💙
+
+                </button>
+
+                ${creator()}
+
+            </section>
+
+        </main>
+    `;
 
 
-function startMiniGame(){
-
-score=0;
-
-app.innerHTML=`
-
-<main class="screen">
-
-<section class="card">
-
-<div class="score">
-HEARTS CAUGHT:
-<span id="score">0</span> / 5
-</div>
-
-<h1
-style="font-size:28px;margin-bottom:10px">
-Catch My Hearts
-</h1>
-
-<p class="subtitle"
-style="margin-bottom:12px">
-Tap the 💙 as quickly as you can!
-</p>
-
-<div
-class="game-area"
-id="gameArea">
-</div>
-
-<p class="tip">
-Find it • Tap it • Repeat 💙
-</p>
-
-${creator()}
-
-</section>
-
-</main>
-`;
-
-spawnHeart();
+    document
+        .getElementById("catchBtn")
+        .onclick = game;
 
 }
 
-
-/* =========================
-   SPAWN HEART
-========================= */
-
-function spawnHeart(){
-
-const area=
-document.getElementById(
-"gameArea"
-);
-
-if(!area)return;
-
-const old=
-document.querySelector(
-".game-heart"
-);
-
-if(old)old.remove();
-
-const heart=
-document.createElement("div");
-
-heart.className=
-"game-heart";
-
-heart.innerHTML="💙";
-
-const maxX=
-area.clientWidth-58;
-
-const maxY=
-area.clientHeight-58;
-
-heart.style.left=
-Math.max(
-5,
-Math.random()*maxX
-)+"px";
-
-heart.style.top=
-Math.max(
-5,
-Math.random()*maxY
-)+"px";
-
-heart.addEventListener(
-"click",
-catchHeart
-);
-
-heart.addEventListener(
-"touchstart",
-catchHeart,
-{passive:true}
-);
-
-area.appendChild(heart);
-
-}
-
-
-/* =========================
-   CATCH HEART
-========================= */
-
-function catchHeart(e){
-
-e.preventDefault();
-
-score++;
-
-const scoreText=
-document.getElementById(
-"score"
-);
-
-if(scoreText){
-scoreText.textContent=
-score;
-}
-
-this.remove();
-
-if(score>=5){
-
-setTimeout(
-miniGameComplete,
-350
-);
-
-}else{
-
-setTimeout(
-spawnHeart,
-120
-);
-
-}
-
-}
-
-
-/* =========================
-   COMPLETE
-========================= */
-
-function miniGameComplete(){
-
-hearts();
-
-app.innerHTML=`
-
-<main class="screen">
-
-<section class="card">
-
-<div class="heart">
-🥹
-</div>
-
-<h1>You Did It!</h1>
-
-<p class="subtitle">
-5 hearts caught! 💙<br><br>
-Okay Zeya...
-<br>
-you unlocked the surprise. ✨
-</p>
-
-<button
-class="main-button"
-id="surprise">
-OPEN MY SURPRISE ❤️
-</button>
-
-${creator()}
-
-</section>
-
-</main>
-`;
-
-document
-.getElementById("surprise")
-.addEventListener(
-"click",
-finalScreen
-);
-
-}
-
-
-/* =========================
-   FINAL
-========================= */
-
-function finalScreen(){
-
-hearts();
-
-setTimeout(hearts,700);
-setTimeout(hearts,1500);
-
-app.innerHTML=`
-
-<main class="screen">
-
-<section class="card">
-
-<div class="heart final-heart">
-💙
-</div>
-
-<h1>Zeya</h1>
-
-<p class="love-text">
-
-You made it through
-<br>
-every little challenge. 🥹
-
-<br><br>
-
-And here's your reward...
-
-<br><br>
-
-<span class="highlight">
-YOU ARE SPECIAL. 💙
-</span>
-
-<br><br>
-
-Chocolate 🍫<br>
-Maggie 🍜<br>
-Blue 💙<br>
-March 🌸<br>
-Ishq Ke Jaan 🎵
-
-<br><br>
-
-Just a few little things
-that make you,
-<br>
-
-<span class="highlight">
-YOU. ✨
-</span>
-
-</p>
-
-<button
-class="main-button"
-id="again">
-PLAY AGAIN ↻
-</button>
-
-${creator()}
-
-</section>
-
-</main>
-`;
-
-document
-.getElementById("again")
-.addEventListener(
-"click",
-start
-);
-
-}
-
-
-/* =========================
-   START APP
-========================= */
-
-start();
-
-</script>
-
-</body>
-</html>
+   
