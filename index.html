@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Zeya 💙</title>
 
 <style>
+
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html,body{
@@ -19,732 +21,457 @@ html,body{
 
 body{
     min-height:100vh;
-    min-height:100svh;
-    overflow:hidden;
-    font-family:Arial,Helvetica,sans-serif;
-    color:white;
     background:
-        radial-gradient(circle at 50% 15%,rgba(45,145,255,.20),transparent 32%),
-        radial-gradient(circle at 10% 90%,rgba(25,100,210,.14),transparent 30%),
-        #020914;
+        radial-gradient(circle at 50% 20%, #12345a 0%, #071525 35%, #020914 75%);
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow:hidden;
 }
 
-button{
-    font-family:inherit;
-}
 
-.background{
+/* BACKGROUND */
+
+.bg{
     position:fixed;
     inset:0;
     overflow:hidden;
     pointer-events:none;
 }
 
-.orb{
+.glow{
     position:absolute;
-    width:280px;
-    height:280px;
+    width:300px;
+    height:300px;
     border-radius:50%;
-    background:rgba(60,150,255,.08);
-    filter:blur(75px);
-    animation:orb 7s ease-in-out infinite;
+    background:#126fc8;
+    opacity:.10;
+    filter:blur(90px);
 }
 
-.orb.one{
-    left:-120px;
-    top:5%;
+.glow1{
+    left:-150px;
+    top:10%;
 }
 
-.orb.two{
-    right:-120px;
+.glow2{
+    right:-150px;
     bottom:5%;
-    animation-delay:2s;
 }
 
-@keyframes orb{
-    0%,100%{
-        transform:scale(.85);
-        opacity:.4;
-    }
-    50%{
-        transform:scale(1.2);
-        opacity:.9;
-    }
-}
 
-.star{
+/* BLINKING DOTS */
+
+.dot{
     position:absolute;
-    width:3px;
-    height:3px;
+    width:4px;
+    height:4px;
     border-radius:50%;
-    background:#c5e8ff;
-    box-shadow:0 0 10px #4da6ff;
-    animation:twinkle 3s infinite;
+    background:#d8efff;
+    box-shadow:0 0 12px #5db5ff;
+    animation:blink 2s infinite;
 }
 
-.s1{left:10%;top:18%}
-.s2{left:23%;top:71%;animation-delay:.8s}
-.s3{left:51%;top:12%;animation-delay:1.4s}
-.s4{left:78%;top:24%;animation-delay:.4s}
-.s5{left:91%;top:57%;animation-delay:1.8s}
-.s6{left:68%;top:82%;animation-delay:2.2s}
-.s7{left:6%;top:48%;animation-delay:1.1s}
+.d1{left:12%;top:18%;}
+.d2{left:27%;top:70%;animation-delay:.4s;}
+.d3{left:51%;top:14%;animation-delay:.8s;}
+.d4{left:77%;top:25%;animation-delay:1.2s;}
+.d5{left:90%;top:58%;animation-delay:1.6s;}
+.d6{left:68%;top:82%;animation-delay:.5s;}
 
-@keyframes twinkle{
+@keyframes blink{
+
     0%,100%{
-        opacity:.2;
+        opacity:.15;
         transform:scale(.7);
     }
+
     50%{
         opacity:1;
         transform:scale(1.5);
     }
+
 }
 
-.screen{
+
+/* MAIN */
+
+.page{
+    width:100%;
     min-height:100vh;
-    min-height:100svh;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:15px;
+    padding:18px;
     position:relative;
+    z-index:2;
 }
+
+
+/* CARD */
 
 .card{
     width:100%;
     max-width:410px;
-    max-height:94vh;
-    overflow-y:auto;
-    padding:30px 18px 23px;
+    padding:38px 22px 25px;
     text-align:center;
-    border-radius:28px;
-    border:1px solid rgba(151,210,255,.18);
+
+    border-radius:30px;
+
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.075),
+            rgba(255,255,255,.09),
             rgba(255,255,255,.025)
         );
+
+    border:1px solid rgba(150,210,255,.20);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
-    box-shadow:
-        0 30px 90px rgba(0,0,0,.58),
-        inset 0 1px 0 rgba(255,255,255,.08);
-    animation:cardIn .5s ease;
+
+    animation:appear .7s ease;
 }
 
-@keyframes cardIn{
+@keyframes appear{
+
     from{
         opacity:0;
-        transform:translateY(18px) scale(.97);
+        transform:translateY(20px) scale(.96);
     }
+
     to{
         opacity:1;
         transform:translateY(0) scale(1);
     }
+
 }
 
-.heart{
-    width:76px;
-    height:76px;
-    margin:0 auto 18px;
+
+/* HEART */
+
+.big-heart{
+    width:105px;
+    height:105px;
+
+    margin:0 auto 25px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     border-radius:50%;
-    font-size:38px;
+
     background:
         radial-gradient(
             circle,
-            rgba(77,166,255,.28),
-            rgba(77,166,255,.03)
+            rgba(45,145,255,.35),
+            rgba(45,145,255,.04)
         );
-    border:1px solid rgba(141,204,255,.22);
-    box-shadow:0 0 30px rgba(77,166,255,.14);
-    animation:beat 1.7s infinite;
+
+    border:1px solid rgba(140,210,255,.25);
+
+    box-shadow:
+        0 0 35px rgba(45,145,255,.25);
+
+    font-size:55px;
+
+    animation:heartBeat 1.8s infinite;
 }
 
-@keyframes beat{
+@keyframes heartBeat{
+
     0%,100%{
         transform:scale(1);
     }
+
     50%{
-        transform:scale(1.1);
+        transform:scale(1.08);
     }
+
 }
 
-h1{
-    font-size:48px;
-    line-height:1;
+
+/* NAME */
+
+.name{
+    font-size:58px;
     font-weight:900;
     letter-spacing:2px;
-    margin-bottom:13px;
+    margin-bottom:15px;
+
     background:
         linear-gradient(
             135deg,
-            #fff,
-            #b9e3ff,
+            #ffffff,
+            #bce5ff,
             #4da6ff
         );
+
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
+
+
+/* TEXT */
 
 .subtitle{
     color:#91abc0;
-    font-size:11px;
+    font-size:12px;
     line-height:1.8;
-    letter-spacing:1.2px;
-    margin-bottom:25px;
+    letter-spacing:1px;
+    margin-bottom:30px;
 }
 
-.main-button{
+
+/* START */
+
+.start-button{
+
     width:100%;
-    max-width:235px;
-    min-height:57px;
-    border-radius:17px;
-    border:1px solid rgba(170,221,255,.42);
+    max-width:270px;
+
+    height:65px;
+
+    border:none;
+    border-radius:18px;
+
+    color:white;
+
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:4px;
+
     background:
         linear-gradient(
             135deg,
-            #126fc8,
-            #4da6ff
+            #1373d0,
+            #49a5ff
         );
-    color:white;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:2.5px;
-    cursor:pointer;
+
     box-shadow:
-        0 10px 32px rgba(77,166,255,.25),
-        inset 0 1px 0 rgba(255,255,255,.3);
+        0 12px 35px rgba(45,145,255,.35),
+        inset 0 1px 0 rgba(255,255,255,.35);
+
+    cursor:pointer;
+
     transition:.25s;
 }
 
-.main-button:hover{
-    transform:translateY(-4px) scale(1.02);
+.start-button:hover{
+
+    transform:translateY(-4px);
+
     box-shadow:
-        0 15px 42px rgba(77,166,255,.42);
+        0 18px 45px rgba(45,145,255,.5);
+
 }
 
-.main-button:active{
+.start-button:active{
+
     transform:scale(.95);
+
 }
+
+
+/* CREATOR */
 
 .creator{
-    margin-top:23px;
+
+    margin-top:28px;
+
     color:#526c82;
+
     font-size:7px;
+
     font-weight:800;
-    letter-spacing:1.4px;
+
+    letter-spacing:1.5px;
 }
 
 .creator a{
-    color:#7faed4;
+
+    color:#83b8df;
+
     text-decoration:none;
+
 }
 
-.progress{
-    color:#6398c2;
-    font-size:8px;
-    font-weight:900;
-    letter-spacing:2px;
-    margin-bottom:13px;
+.creator a:hover{
+
+    color:#bce5ff;
+
 }
 
-.progress-line{
-    width:100%;
+
+/* SMALL BLUE LINE */
+
+.line{
+
+    width:78px;
     height:4px;
+
+    margin:25px auto 0;
+
     border-radius:20px;
-    background:rgba(255,255,255,.07);
-    margin-bottom:19px;
-    overflow:hidden;
+
+    background:#4da6ff;
+
+    box-shadow:
+        0 0 15px rgba(77,166,255,.7);
+
 }
 
-.progress-fill{
-    height:100%;
-    background:linear-gradient(90deg,#126fc8,#4da6ff);
-    box-shadow:0 0 12px rgba(77,166,255,.7);
+
+/* NEXT SCREEN */
+
+#surprise{
+    display:none;
 }
 
-.question-title{
-    font-size:22px;
-    line-height:1.3;
-    margin-bottom:20px;
-}
+.surprise-title{
 
-.answers{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-.answer{
-    min-height:66px;
-    border-radius:17px;
-    border:1px solid rgba(141,204,255,.15);
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.018)
-        );
-    color:#e9f6ff;
-    cursor:pointer;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:5px;
-    transition:.22s;
-}
-
-.answer:hover{
-    transform:translateY(-3px);
-    border-color:rgba(77,166,255,.55);
-}
-
-.answer.correct{
-    border-color:#4da6ff;
-    background:rgba(77,166,255,.23);
-    box-shadow:0 0 30px rgba(77,166,255,.35);
-}
-
-.answer.wrong{
-    animation:shake .3s;
-}
-
-@keyframes shake{
-    0%,100%{transform:translateX(0)}
-    25%{transform:translateX(-6px)}
-    75%{transform:translateX(6px)}
-}
-
-.answer-emoji{
-    font-size:21px;
-}
-
-.answer-text{
-    font-size:8px;
-    font-weight:800;
-}
-
-.game-area{
-    position:relative;
-    height:285px;
-    width:100%;
-    margin-top:8px;
-    border-radius:20px;
-    border:1px solid rgba(141,204,255,.14);
-    background:rgba(0,10,22,.35);
-    overflow:hidden;
-}
-
-.game-heart{
-    position:absolute;
-    width:54px;
-    height:54px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:27px;
-    background:rgba(77,166,255,.13);
-    border:1px solid rgba(141,204,255,.28);
-    box-shadow:0 0 20px rgba(77,166,255,.2);
-    cursor:pointer;
-    user-select:none;
-    animation:heartAppear .25s ease;
-}
-
-@keyframes heartAppear{
-    from{
-        transform:scale(.3);
-        opacity:0;
-    }
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
-}
-
-.score{
-    color:#9bd5ff;
-    font-size:10px;
+    font-size:42px;
     font-weight:900;
-    letter-spacing:2px;
-    margin-bottom:9px;
-}
 
-.tip{
-    color:#667f94;
-    font-size:8px;
-    letter-spacing:1px;
-    margin-top:10px;
-}
+    margin-bottom:15px;
 
-/* MEMORIES */
-
-.memory-title{
-    font-size:29px;
-    font-weight:900;
-    margin-bottom:7px;
     background:
         linear-gradient(
             135deg,
-            #fff,
-            #9bd5ff,
+            white,
             #4da6ff
         );
+
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
-.memory-subtitle{
-    color:#7893a8;
-    font-size:8px;
-    letter-spacing:1.7px;
-    margin-bottom:18px;
-}
+.surprise-text{
 
-.memory-list{
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    margin-bottom:19px;
-}
+    color:#a9c4d8;
 
-.memory-card{
-    position:relative;
-    overflow:hidden;
-    border-radius:18px;
-    border:1px solid rgba(141,204,255,.16);
-    background:rgba(0,10,22,.45);
-    box-shadow:0 12px 30px rgba(0,0,0,.25);
-    animation:memoryIn .55s ease both;
-}
+    font-size:11px;
 
-.memory-card:nth-child(2){
-    animation-delay:.12s;
-}
-
-.memory-card:nth-child(3){
-    animation-delay:.24s;
-}
-
-@keyframes memoryIn{
-    from{
-        opacity:0;
-        transform:translateY(18px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.memory-image{
-    width:100%;
-    height:220px;
-    display:block;
-    object-fit:cover;
-}
-
-.memory-overlay{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    height:85px;
-    background:
-        linear-gradient(
-            transparent,
-            rgba(1,8,17,.95)
-        );
-}
-
-.memory-caption{
-    position:relative;
-    padding:10px 13px 13px;
-    text-align:left;
-    margin-top:-15px;
-    z-index:2;
-}
-
-.memory-caption strong{
-    display:block;
-    color:#b9e3ff;
-    font-size:10px;
-    letter-spacing:1px;
-    margin-bottom:4px;
-}
-
-.memory-caption span{
-    color:#7892a5;
-    font-size:8px;
-}
-
-/* LETTER */
-
-.envelope{
-    width:145px;
-    height:105px;
-    margin:0 auto 24px;
-    position:relative;
-    animation:floatEnvelope 2.5s ease-in-out infinite;
-}
-
-@keyframes floatEnvelope{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-7px);
-    }
-}
-
-.envelope-body{
-    position:absolute;
-    inset:0;
-    border-radius:10px;
-    background:linear-gradient(145deg,#146fc4,#4da6ff);
-    box-shadow:0 15px 35px rgba(77,166,255,.28);
-}
-
-.envelope-flap{
-    position:absolute;
-    left:0;
-    top:0;
-    width:0;
-    height:0;
-    border-left:72px solid transparent;
-    border-right:72px solid transparent;
-    border-top:52px solid #8acbff;
-}
-
-.envelope-heart{
-    position:absolute;
-    z-index:3;
-    left:50%;
-    top:48%;
-    transform:translate(-50%,-50%);
-    font-size:30px;
-}
-
-.letter{
-    padding:19px 15px;
-    margin-bottom:21px;
-    border-radius:18px;
-    border:1px solid rgba(141,204,255,.18);
-    background:rgba(3,18,34,.55);
-}
-
-.letter-title{
-    color:#9bd5ff;
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:2px;
-    margin-bottom:14px;
-}
-
-.letter p{
-    color:#b9cfdf;
-    font-size:10px;
     line-height:2;
+
+    margin-bottom:25px;
+
 }
 
-/* FLOATING HEARTS */
 
-.floating-heart{
-    position:fixed;
-    bottom:-30px;
-    font-size:20px;
-    pointer-events:none;
-    z-index:50;
-    animation:floatUp 4s linear forwards;
-}
+/* PHOTO */
 
-@keyframes floatUp{
-    0%{
-        opacity:0;
-        transform:translateY(0) scale(.7);
-    }
+.photo{
 
-    15%{
-        opacity:1;
-    }
+    width:100%;
+    height:230px;
 
-    100%{
-        opacity:0;
-        transform:
-            translateY(-105vh)
-            rotate(25deg)
-            scale(1.3);
-    }
-}
+    object-fit:cover;
 
-/* MUSIC INDICATOR */
-
-.music{
-    position:fixed;
-    right:13px;
-    top:13px;
-    z-index:100;
-    display:none;
-    align-items:center;
-    gap:7px;
-    padding:8px 11px;
     border-radius:20px;
-    border:1px solid rgba(141,204,255,.20);
-    background:rgba(3,15,29,.72);
-    backdrop-filter:blur(12px);
-    color:#8dccff;
-    font-size:8px;
-    font-weight:900;
-    letter-spacing:1px;
+
+    border:1px solid rgba(140,210,255,.2);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.4);
+
+    margin-bottom:20px;
+
 }
 
-.music.show{
-    display:flex;
-}
 
-.music-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#4da6ff;
-    box-shadow:0 0 10px #4da6ff;
-    animation:musicPulse .8s infinite alternate;
-}
+/* MOBILE */
 
-@keyframes musicPulse{
-    from{transform:scale(.7)}
-    to{transform:scale(1.3)}
-}
-
-@media(max-width:480px){
+@media(max-width:450px){
 
     .card{
-        padding:28px 16px 22px;
+        padding:32px 17px 23px;
     }
 
-    h1{
-        font-size:44px;
+    .name{
+        font-size:52px;
     }
 
-    .memory-image{
-        height:215px;
-    }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<div class="background">
 
-    <div class="orb one"></div>
-    <div class="orb two"></div>
+<!-- BACKGROUND -->
 
-    <span class="star s1"></span>
-    <span class="star s2"></span>
-    <span class="star s3"></span>
-    <span class="star s4"></span>
-    <span class="star s5"></span>
-    <span class="star s6"></span>
-    <span class="star s7"></span>
+<div class="bg">
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+
+    <div class="dot d1"></div>
+    <div class="dot d2"></div>
+    <div class="dot d3"></div>
+    <div class="dot d4"></div>
+    <div class="dot d5"></div>
+    <div class="dot d6"></div>
 
 </div>
 
 
 <!-- MUSIC -->
 
-<audio
-    id="loveSong"
-    preload="auto"
-    loop>
-    <source src="sahil%20love.mp3" type="audio/mpeg">
+<audio id="loveSong" loop>
+
+    <source
+        src="sahil%20love.mp3"
+        type="audio/mpeg">
+
 </audio>
 
 
-<div class="music" id="musicIndicator">
+<!-- START SCREEN -->
 
-    <span class="music-dot"></span>
+<div class="page" id="startScreen">
 
-    <span>NOW PLAYING 🎵</span>
+    <div class="card">
 
-</div>
-
-
-<div id="app"></div>
-
-
-<script>
-
-/* =========================
-   SETTINGS
-========================= */
-
-const instagram =
-    "https://www.instagram.com/be.like_sahil/";
+        <div class="big-heart">
+            💙
+        </div>
 
 
-const app =
-    document.getElementById("app");
+        <div class="name">
+            Zeya
+        </div>
 
 
-const song =
-    document.getElementById("loveSong");
+        <div class="subtitle">
+
+            A Little Surprise<br>
+            Made Just For You ✨
+
+        </div>
 
 
-const musicIndicator =
-    document.getElementById("musicIndicator");
+        <button
+            class="start-button"
+            onclick="startGame()">
+
+            START ❤️
+
+        </button>
 
 
-/* =========================
-   MUSIC
-========================= */
-
-function startMusic(){
-
-    song.volume = 0.75;
-
-    const playPromise =
-        song.play();
-
-    if(playPromise !== undefined){
-
-        playPromise
-        .then(()=>{
-
-            musicIndicator.classList.add("show");
-
-        })
-        .catch(()=>{
-
-            musicIndicator.classList.remove("show");
-
-        });
-
-    }
-
-}
-
-
-/* =========================
-   CREATOR
-========================= */
-
-function creator(){
-
-    return `
         <div class="creator">
 
             Created by
 
             <a
-                href="${instagram}"
+                href="https://www.instagram.com/be.like_sahil/"
                 target="_blank"
                 rel="noopener noreferrer">
 
@@ -753,421 +480,167 @@ function creator(){
             </a>
 
         </div>
-    `;
 
-}
 
+        <div class="line"></div>
 
-/* =========================
-   HEART EFFECT
-========================= */
+    </div>
 
-function hearts(){
+</div>
 
-    const emojis =
-        ["💙","🩵","✨","💫","💙"];
 
-    for(let i=0;i<14;i++){
 
-        setTimeout(()=>{
+<!-- SURPRISE SCREEN -->
 
-            const h =
-                document.createElement("div");
+<div
+    class="page"
+    id="surprise">
 
-            h.className =
-                "floating-heart";
+    <div class="card">
 
-            h.innerHTML =
-                emojis[
-                    Math.floor(
-                        Math.random() *
-                        emojis.length
-                    )
-                ];
+        <div class="big-heart">
+            💙
+        </div>
 
-            h.style.left =
-                Math.random()*100 + "%";
 
-            h.style.animationDuration =
-                (3 + Math.random()*2) + "s";
+        <div class="surprise-title">
+            Hey Zeya
+        </div>
 
-            document.body.appendChild(h);
 
-            setTimeout(()=>{
-                h.remove();
-            },5000);
+        <div class="surprise-text">
 
-        },i*120);
+            Your little surprise has started. 🥹💙
 
-    }
+            <br><br>
 
-}
+            Favourite Food 🍫 Chocolate<br>
+            Favourite Food 🍜 Maggie<br>
+            Favourite Colour 💙 Blue<br>
+            Birthday 🌸 March<br>
+            Favourite Song 🎵 Ishq Ke Jaan
 
+        </div>
 
-/* =========================
-   START SCREEN
-========================= */
 
-function start(){
+        <button
+            class="start-button"
+            onclick="showPhoto()">
 
-    app.innerHTML = `
+            NEXT ✨
 
-        <main class="screen">
+        </button>
 
-            <section class="card">
 
-                <div class="heart">
-                    💙
-                </div>
+        <div class="creator">
 
-                <h1>
-                    Zeya
-                </h1>
+            Created by
 
-                <p class="subtitle">
+            <a
+                href="https://www.instagram.com/be.like_sahil/"
+                target="_blank"
+                rel="noopener noreferrer">
 
-                    A Little Surprise<br>
-                    Made Just For You ✨
+                @be.like_sahil
 
-                </p>
+            </a>
 
-                <button
-                    class="main-button"
-                    id="startBtn">
+        </div>
 
-                    START ❤️
+    </div>
 
-                </button>
+</div>
 
-                ${creator()}
 
-            </section>
 
-        </main>
-    `;
+<script>
 
+function startGame(){
 
-    document
-        .getElementById("startBtn")
-        .onclick = function(){
+    /* START BUTTON CLICK = MUSIC */
 
-            /*
-             * IMPORTANT:
-             * Music starts here because
-             * this is a real user click.
-             */
+    const song =
+        document.getElementById("loveSong");
 
-            startMusic();
+    song.volume = 0.75;
 
-            hearts();
+    song.play().catch(function(){
 
-            welcome();
-
-        };
-
-}
-
-
-/* =========================
-   WELCOME
-========================= */
-
-function welcome(){
-
-    app.innerHTML = `
-
-        <main class="screen">
-
-            <section class="card">
-
-                <div class="heart">
-                    ✨
-                </div>
-
-                <h1>
-                    Hey Zeya
-                </h1>
-
-                <p class="subtitle">
-
-                    Ready for a tiny little<br>
-                    challenge? 💙
-
-                </p>
-
-                <button
-                    class="main-button"
-                    id="playBtn">
-
-                    LET'S PLAY 💙
-
-                </button>
-
-                ${creator()}
-
-            </section>
-
-        </main>
-    `;
-
-
-    document
-        .getElementById("playBtn")
-        .onclick = () => {
-
-            question(1);
-
-        };
-
-}
-
-
-/* =========================
-   QUESTIONS
-========================= */
-
-const questions = [
-
-    {
-        emoji:"🍫",
-        title:"What's Zeya's favourite food?",
-        answers:[
-            ["🍕","Pizza",false],
-            ["🍫","Chocolate",true],
-            ["🍔","Burger",false],
-            ["🍟","Fries",false]
-        ]
-    },
-
-    {
-        emoji:"🍜",
-        title:"Another favourite food?",
-        answers:[
-            ["🍰","Cake",false],
-            ["🍣","Sushi",false],
-            ["🍜","Maggie",true],
-            ["🌮","Taco",false]
-        ]
-    },
-
-    {
-        emoji:"💙",
-        title:"What's Zeya's favourite colour?",
-        answers:[
-            ["❤️","Red",false],
-            ["💚","Green",false],
-            ["💙","Blue",true],
-            ["💜","Purple",false]
-        ]
-    },
-
-    {
-        emoji:"🎂",
-        title:"Zeya's birthday month?",
-        answers:[
-            ["❄️","January",false],
-            ["🌸","March",true],
-            ["☀️","July",false],
-            ["🎄","December",false]
-        ]
-    },
-
-    {
-        emoji:"🎵",
-        title:"Zeya's favourite song?",
-        answers:[
-            ["🎶","Perfect",false],
-            ["🎧","Ishq Ke Jaan",true],
-            ["🎵","Until I Found You",false],
-            ["🎤","Shape Of You",false]
-        ]
-    }
-
-];
-
-
-/* =========================
-   QUESTION SCREEN
-========================= */
-
-function question(number){
-
-    const q =
-        questions[number-1];
-
-
-    let answers = "";
-
-
-    q.answers.forEach(a => {
-
-        answers += `
-
-            <button
-                class="answer"
-                data-correct="${a[2]}">
-
-                <span class="answer-emoji">
-                    ${a[0]}
-                </span>
-
-                <span class="answer-text">
-                    ${a[1]}
-                </span>
-
-            </button>
-
-        `;
+        console.log(
+            "Music could not start."
+        );
 
     });
 
 
-    const progress =
-        ((number-1)/5)*100;
+    /* CHANGE SCREEN */
+
+    document.getElementById(
+        "startScreen"
+    ).style.display = "none";
 
 
-    app.innerHTML = `
-
-        <main class="screen">
-
-            <section class="card">
-
-                <div class="progress">
-
-                    QUESTION
-                    ${String(number).padStart(2,"0")}
-                    / 05
-
-                </div>
-
-                <div class="progress-line">
-
-                    <div
-                        class="progress-fill"
-                        style="width:${progress}%">
-
-                    </div>
-
-                </div>
-
-                <div class="heart">
-                    ${q.emoji}
-                </div>
-
-                <h1 class="question-title">
-                    ${q.title}
-                </h1>
-
-                <div class="answers">
-                    ${answers}
-                </div>
-
-                ${creator()}
-
-            </section>
-
-        </main>
-    `;
-
-
-    document
-        .querySelectorAll(".answer")
-        .forEach(btn => {
-
-            btn.onclick = function(){
-
-                if(
-                    this.dataset.correct !== "true"
-                ){
-
-                    this.classList.add("wrong");
-
-                    setTimeout(()=>{
-
-                        this.classList.remove("wrong");
-
-                    },400);
-
-                    return;
-
-                }
-
-
-                this.classList.add("correct");
-
-                hearts();
-
-
-                setTimeout(()=>{
-
-                    if(number < 5){
-
-                        question(number+1);
-
-                    }else{
-
-                        gameIntro();
-
-                    }
-
-                },500);
-
-            };
-
-        });
+    document.getElementById(
+        "surprise"
+    ).style.display = "flex";
 
 }
 
 
-/* =========================
-   GAME INTRO
-========================= */
+/* PHOTO SCREEN */
 
-function gameIntro(){
+function showPhoto(){
 
-    app.innerHTML = `
+    document.getElementById(
+        "surprise"
+    ).innerHTML = `
 
-        <main class="screen">
+        <div class="card">
 
-            <section class="card">
+            <div class="surprise-title">
+                Zeya 💙
+            </div>
 
-                <div class="heart">
-                    💙
-                </div>
+            <div class="surprise-text">
+                A few beautiful memories... ✨
+            </div>
 
-                <h1>
-                    One More!
-                </h1>
+            <img
+                class="photo"
+                src="zeya1.jpg"
+                alt="Zeya">
 
-                <p class="subtitle">
+            <button
+                class="start-button"
+                onclick="location.reload()">
 
-                    Quiz complete! 🥹<br><br>
+                START AGAIN ↻
 
-                    Catch 5 hearts to unlock<br>
-                    something special. ✨
+            </button>
 
-                </p>
+            <div class="creator">
 
-                <button
-                    class="main-button"
-                    id="catchBtn">
+                Created by
 
-                    CATCH HEARTS 💙
+                <a
+                    href="https://www.instagram.com/be.like_sahil/"
+                    target="_blank"
+                    rel="noopener noreferrer">
 
-                </button>
+                    @be.like_sahil
 
-                ${creator()}
+                </a>
 
-            </section>
+            </div>
 
-        </main>
+        </div>
+
     `;
-
-
-    document
-        .getElementById("catchBtn")
-        .onclick = game;
 
 }
 
-   
+</script>
+
+
+</body>
+</html>
