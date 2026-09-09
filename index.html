@@ -3,864 +3,644 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Baby 💙</title>
+
+<title>Zeya ❤️ Sarfaraz | Our Love Game</title>
 
 <style>
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
 }
 
 body{
-    width:100%;
-    height:100vh;
+    min-height:100vh;
     overflow:hidden;
-    background:linear-gradient(145deg,#020817,#061936,#020817);
+    font-family:Arial, sans-serif;
     color:white;
-    font-family:Arial,sans-serif;
+    background:
+        radial-gradient(circle at 50% 0%,#164b91 0%,#081b3b 42%,#020713 100%);
 }
 
-.screen{
-    position:absolute;
-    inset:0;
+/* COMMON PAGE */
+
+.page{
+    min-height:100vh;
+    width:100%;
     display:none;
     align-items:center;
     justify-content:center;
-    padding:20px;
+    padding:18px;
 }
 
-.screen.active{
+.page.active{
     display:flex;
 }
+
+/* CARD */
 
 .card{
     width:100%;
     max-width:430px;
     padding:30px 22px;
     text-align:center;
-    border-radius:28px;
-    background:rgba(7,22,48,.88);
-    border:1px solid rgba(70,160,255,.3);
-    box-shadow:0 0 45px rgba(0,120,255,.25);
+    border-radius:30px;
+
+    background:rgba(255,255,255,.075);
+    border:1px solid rgba(100,180,255,.28);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 0 50px rgba(0,120,255,.18),
+        inset 0 0 30px rgba(255,255,255,.025);
 }
 
-.small{
-    color:#66b4ff;
-    font-size:12px;
-    letter-spacing:3px;
-    margin-bottom:12px;
+/* HEART */
+
+.big-heart{
+    font-size:78px;
+    animation:heartbeat 1.25s infinite;
+    filter:drop-shadow(0 0 20px #1590ff);
 }
 
-h1{
-    font-size:36px;
-    margin-bottom:12px;
-}
-
-h2{
-    font-size:27px;
-    margin-bottom:10px;
-}
-
-p{
-    color:#b9c9dc;
-    line-height:1.6;
-}
-
-.heart-big{
-    font-size:75px;
-    margin-bottom:10px;
-    animation:pulse 1.4s infinite;
-}
-
-@keyframes pulse{
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
     50%{
-        transform:scale(1.15);
-        filter:drop-shadow(0 0 22px #198cff);
+        transform:scale(1.16);
     }
 }
 
+/* TEXT */
+
+h1{
+    margin-top:12px;
+    font-size:31px;
+}
+
+.blue{
+    color:#4ba9ff;
+}
+
+.subtitle{
+    margin-top:12px;
+    color:#c9ddf8;
+    line-height:1.65;
+    font-size:15px;
+}
+
+/* START BUTTON */
+
 .start-btn{
-    width:100%;
     margin-top:25px;
-    padding:16px;
+    padding:15px 38px;
+
     border:0;
     border-radius:50px;
+
     color:white;
-    background:linear-gradient(135deg,#087cff,#0054cc);
     font-size:17px;
     font-weight:bold;
-    box-shadow:0 0 25px rgba(0,120,255,.5);
+
+    background:linear-gradient(135deg,#168cff,#0056bd);
+
+    box-shadow:0 0 28px rgba(20,140,255,.55);
+
     cursor:pointer;
 }
 
 .start-btn:active{
-    transform:scale(.97);
+    transform:scale(.94);
 }
 
-/* HEART GAME */
+/* INSTAGRAM */
 
-.game-card{
-    width:100%;
-    max-width:500px;
-    text-align:center;
-}
+.instagram{
+    display:inline-block;
+    margin-top:18px;
 
-.game-top{
-    display:flex;
-    justify-content:space-between;
-    margin:15px 3px;
-    color:#8bc5ff;
-}
+    padding:10px 20px;
 
-.game-area{
-    position:relative;
-    width:100%;
-    height:420px;
-    overflow:hidden;
-    border-radius:25px;
-    background:rgba(2,12,30,.8);
-    border:1px solid rgba(70,160,255,.3);
-}
+    border-radius:30px;
 
-.catch-heart{
-    position:absolute;
-    font-size:45px;
-    cursor:pointer;
-    user-select:none;
-    animation:heartPulse .8s infinite alternate;
-}
+    color:#fff;
+    text-decoration:none;
 
-@keyframes heartPulse{
-    from{transform:scale(.9)}
-    to{
-        transform:scale(1.18);
-        filter:drop-shadow(0 0 15px #168cff);
-    }
-}
-
-.progress-bg{
-    height:8px;
-    background:#15233b;
-    border-radius:20px;
-    margin-top:12px;
-}
-
-.progress{
-    height:100%;
-    width:0%;
-    border-radius:20px;
-    background:#168cff;
-    transition:.25s;
-}
-
-/* QUIZ */
-
-.quiz-card{
-    width:100%;
-    max-width:440px;
-}
-
-.quiz-top{
-    display:flex;
-    justify-content:space-between;
-    color:#70baff;
-    margin-bottom:25px;
-}
-
-.question{
-    font-size:22px;
+    font-size:13px;
     font-weight:bold;
-    line-height:1.4;
-    margin-bottom:22px;
+
+    background:linear-gradient(
+        135deg,
+        #405de6,
+        #833ab4,
+        #e1306c,
+        #fd1d1d,
+        #fcb045
+    );
+
+    box-shadow:0 0 18px rgba(225,48,108,.3);
 }
 
-.options{
-    display:grid;
-    gap:12px;
+.created{
+    margin-top:20px;
+    color:#7195c2;
+    font-size:12px;
 }
 
-.option{
-    width:100%;
-    padding:15px;
-    border-radius:15px;
-    border:1px solid rgba(80,160,255,.25);
-    background:#0c2548;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
+/* GAME */
+
+.game-title{
+    color:#55adff;
+    font-size:27px;
+    font-weight:bold;
 }
 
-.option:active{
-    transform:scale(.98);
-}
-
-.option.correct{
-    background:#075b45;
-    border-color:#39e5ad;
-}
-
-.option.wrong{
-    background:#652238;
-    border-color:#ff5578;
-}
-
-.message{
-    min-height:24px;
-    margin-top:15px;
-    color:#7fc0ff;
+.score{
+    margin-top:8px;
+    color:#cce3ff;
     font-size:14px;
 }
 
-.next{
+#gameArea{
+    position:relative;
+
     width:100%;
+    height:410px;
+
     margin-top:18px;
-    padding:14px;
+
+    overflow:hidden;
+
+    border-radius:23px;
+
+    border:1px solid rgba(80,170,255,.22);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,130,255,.14),
+            transparent 65%
+        );
+}
+
+#heart{
+    position:absolute;
+
+    display:none;
+
+    font-size:48px;
+
+    cursor:pointer;
+    user-select:none;
+
+    filter:drop-shadow(0 0 15px #168cff);
+
+    animation:heartPop .3s ease;
+}
+
+@keyframes heartPop{
+    from{
+        transform:scale(.3);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.message{
+    min-height:25px;
+
+    margin-top:13px;
+
+    color:#9ccaff;
+    font-size:14px;
+}
+
+.next-btn{
+    display:none;
+
+    margin:17px auto 0;
+
+    padding:13px 28px;
+
     border:0;
-    border-radius:15px;
-    background:#087cff;
+    border-radius:40px;
+
+    background:#168cff;
     color:white;
+
+    font-size:15px;
     font-weight:bold;
-    opacity:.35;
+
+    box-shadow:0 0 20px rgba(20,140,255,.5);
+
+    cursor:pointer;
+}
+
+/* FLOATING HEARTS */
+
+.floating{
+    position:fixed;
+    bottom:-50px;
+
     pointer-events:none;
+
+    opacity:.45;
+
+    animation:floatUp linear infinite;
 }
 
-.next.ready{
-    opacity:1;
-    pointer-events:auto;
-}
+@keyframes floatUp{
+    from{
+        transform:translateY(0) scale(.7);
+        opacity:0;
+    }
 
-/* FINAL */
+    20%{
+        opacity:.5;
+    }
 
-.final-heart{
-    font-size:75px;
-    animation:pulse 1.4s infinite;
-}
-
-.details{
-    display:grid;
-    gap:9px;
-    margin-top:20px;
-}
-
-.detail{
-    padding:12px;
-    border-radius:13px;
-    background:#0b274b;
-    color:#c8ddf5;
-}
-
-.detail b{
-    color:#66b5ff;
-}
-
-.signature{
-    margin-top:22px;
-    color:#65b5ff;
-    letter-spacing:2px;
-    font-weight:bold;
+    to{
+        transform:translateY(-115vh) scale(1.3);
+        opacity:0;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<audio id="loveSong" loop preload="auto">
-    <source src="sahil%20love.mp3" type="audio/mpeg">
+<!-- FLOATING BLUE HEARTS -->
+
+<div class="floating" style="left:5%;font-size:22px;animation-duration:8s;">💙</div>
+<div class="floating" style="left:20%;font-size:18px;animation-duration:11s;">💙</div>
+<div class="floating" style="left:40%;font-size:28px;animation-duration:9s;">💙</div>
+<div class="floating" style="left:65%;font-size:20px;animation-duration:12s;">💙</div>
+<div class="floating" style="left:88%;font-size:27px;animation-duration:10s;">💙</div>
+
+
+<!-- ========================= -->
+<!-- PAGE 1 : START -->
+<!-- ========================= -->
+
+<section id="startPage" class="page active">
+
+<div class="card">
+
+    <div class="big-heart">💙</div>
+
+    <h1>
+        Hey <span class="blue">Zeya</span> ❤️
+    </h1>
+
+    <p class="subtitle">
+
+        Welcome to our little love game... 🥹
+
+        <br><br>
+
+        This isn't just a game.
+
+        <br>
+
+        It's a tiny journey made
+        specially for my <b>Baby</b>. 💙
+
+        <br><br>
+
+        <b>Zeya 🌷 Sarfaraz</b>
+
+    </p>
+
+
+    <!-- START -->
+
+    <button class="start-btn" onclick="startGame()">
+        START OUR LOVE ❤️
+    </button>
+
+
+    <!-- INSTAGRAM -->
+
+    <br>
+
+    <a
+        class="instagram"
+        href="https://www.instagram.com/be.like_sahil?stkn=MTF3eWhrZ3o1NWdzeQ=="
+        target="_blank"
+    >
+        📸 @be.like_sahil
+    </a>
+
+
+    <div class="created">
+        Created with ❤️ by @be.like_sahil
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- PAGE 2 : CATCH MY HEART -->
+<!-- ========================= -->
+
+<section id="heartPage" class="page">
+
+<div class="card">
+
+    <div class="game-title">
+        💙 Catch My Heart
+    </div>
+
+    <p class="subtitle">
+
+        Baby, catch my hearts...
+
+        <br>
+
+        Catch <b>10 hearts</b> to unlock
+        the next part of our story. ❤️
+
+    </p>
+
+
+    <div class="score">
+
+        Hearts caught:
+        <b>
+            <span id="score">0</span>/10
+        </b>
+
+    </div>
+
+
+    <div id="gameArea">
+
+        <div id="heart" onclick="catchHeart()">
+            💙
+        </div>
+
+    </div>
+
+
+    <div id="gameMessage" class="message">
+        Catch my heart, Baby... 💙
+    </div>
+
+
+    <button
+        id="nextButton"
+        class="next-btn"
+        onclick="nextPage()"
+    >
+        CONTINUE OUR STORY 💌
+    </button>
+
+</div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- LOVE SONG -->
+<!-- ========================= -->
+
+<audio id="loveSong" loop>
+
+    <source
+        src="sahil love.mp3"
+        type="audio/mpeg"
+    >
+
 </audio>
 
-
-<!-- ================= START ================= -->
-
-<section id="startScreen" class="screen active">
-
-    <div class="card">
-
-        <div class="heart-big">💙</div>
-
-        <div class="small">A LITTLE GAME FOR</div>
-
-        <h1>My Baby</h1>
-
-        <p>
-            Ek chhota sa game hai tumhare liye... 🥹<br>
-            Pehle mere hearts catch karo,<br>
-            phir Zeya ke baare mein puzzles solve karo. ❤️
-        </p>
-
-        <button id="startButton" class="start-btn">
-            START OUR GAME ❤️
-        </button>
-
-        <p style="font-size:12px;margin-top:15px;">
-            🎵 Music starts with the game
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ================= HEART GAME ================= -->
-
-<section id="heartScreen" class="screen">
-
-    <div class="game-card">
-
-        <div class="small">LEVEL 1</div>
-
-        <h2>Catch My Hearts 💙</h2>
-
-        <p>Catch all <b>10 hearts</b> to unlock the puzzles.</p>
-
-        <div class="game-top">
-            <span>❤️ <b id="heartCount">0</b>/10</span>
-            <span>Level 1</span>
-        </div>
-
-        <div id="gameArea" class="game-area"></div>
-
-        <div style="margin-top:15px">
-            <p id="gameText">Catch the glowing heart! 💙</p>
-
-            <div class="progress-bg">
-                <div id="gameProgress" class="progress"></div>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= QUIZ 1 ================= -->
-
-<section id="quiz1" class="screen">
-
-    <div class="card quiz-card">
-
-        <div class="quiz-top">
-            <span>Puzzle 1</span>
-            <span>1 / 5</span>
-        </div>
-
-        <div class="question">
-            What are Baby's favourite foods? 🍫🍜
-        </div>
-
-        <div class="options">
-
-            <button class="option food" data-answer="wrong">
-                🍕 Pizza & Burger
-            </button>
-
-            <button class="option food" data-answer="correct">
-                🍫 Chocolate & Maggie
-            </button>
-
-            <button class="option food" data-answer="wrong">
-                🍗 Biryani & Kebab
-            </button>
-
-            <button class="option food" data-answer="wrong">
-                🍝 Pasta & Fries
-            </button>
-
-        </div>
-
-        <div id="foodMessage" class="message"></div>
-
-        <button id="next1" class="next">
-            NEXT PUZZLE →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ================= QUIZ 2 ================= -->
-
-<section id="quiz2" class="screen">
-
-    <div class="card quiz-card">
-
-        <div class="quiz-top">
-            <span>Puzzle 2</span>
-            <span>2 / 5</span>
-        </div>
-
-        <div class="question">
-            Baby's birthday month is...? 🎂
-        </div>
-
-        <div class="options">
-
-            <button class="option month">January</button>
-
-            <button class="option month" data-correct="true">
-                March 🌸
-            </button>
-
-            <button class="option month">July</button>
-
-            <button class="option month">December</button>
-
-        </div>
-
-        <div id="monthMessage" class="message"></div>
-
-        <button id="next2" class="next">
-            NEXT PUZZLE →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ================= QUIZ 3 ================= -->
-
-<section id="quiz3" class="screen">
-
-    <div class="card quiz-card">
-
-        <div class="quiz-top">
-            <span>Puzzle 3</span>
-            <span>3 / 5</span>
-        </div>
-
-        <div class="question">
-            What is Baby's favourite colour? 🎨
-        </div>
-
-        <div class="options">
-
-            <button class="option colour">❤️ Red</button>
-
-            <button class="option colour">🖤 Black</button>
-
-            <button class="option colour" data-correct="true">
-                💙 Blue
-            </button>
-
-            <button class="option colour">🩷 Pink</button>
-
-        </div>
-
-        <div id="colourMessage" class="message"></div>
-
-        <button id="next3" class="next">
-            NEXT PUZZLE →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ================= QUIZ 4 ================= -->
-
-<section id="quiz4" class="screen">
-
-    <div class="card quiz-card">
-
-        <div class="quiz-top">
-            <span>Puzzle 4</span>
-            <span>4 / 5</span>
-        </div>
-
-        <div class="question">
-            What is my cutest nickname for you? 🧸
-        </div>
-
-        <div class="options">
-
-            <button class="option nickname">Angel</button>
-
-            <button class="option nickname">Princess</button>
-
-            <button class="option nickname" data-correct="true">
-                Baby 💙
-            </button>
-
-            <button class="option nickname">Queen</button>
-
-        </div>
-
-        <div id="nicknameMessage" class="message"></div>
-
-        <button id="next4" class="next">
-            FINAL PUZZLE →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ================= QUIZ 5 ================= -->
-
-<section id="quiz5" class="screen">
-
-    <div class="card quiz-card">
-
-        <div class="quiz-top">
-            <span>Final Puzzle</span>
-            <span>5 / 5</span>
-        </div>
-
-        <div class="question">
-            Complete the secret word 💙
-            <br><br>
-            <span style="color:#69b7ff;font-size:30px">
-                B _ B Y
-            </span>
-        </div>
-
-        <div class="options">
-
-            <button class="option finalLetter">E</button>
-
-            <button class="option finalLetter" data-correct="true">
-                A
-            </button>
-
-            <button class="option finalLetter">I</button>
-
-            <button class="option finalLetter">O</button>
-
-        </div>
-
-        <div id="finalMessage" class="message"></div>
-
-        <button id="finishButton" class="next">
-            UNLOCK MY MESSAGE 💙
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FINAL ================= -->
-
-<section id="finalScreen" class="screen">
-
-    <div class="card">
-
-        <div class="final-heart">💙</div>
-
-        <div class="small">GAME COMPLETED</div>
-
-        <h1>You Know My Baby 🥹</h1>
-
-        <p>
-            You solved every puzzle...<br>
-            but the best part of this game is still you. ❤️
-        </p>
-
-        <div class="details">
-
-            <div class="detail">
-                🍫 Favourite Food — <b>Chocolate</b>
-            </div>
-
-            <div class="detail">
-                🍜 Favourite Food — <b>Maggie</b>
-            </div>
-
-            <div class="detail">
-                🎂 Birthday Month — <b>March</b>
-            </div>
-
-            <div class="detail">
-                💙 Favourite Colour — <b>Blue</b>
-            </div>
-
-            <div class="detail">
-                🧸 Nickname — <b>Baby</b>
-            </div>
-
-        </div>
-
-        <p style="margin-top:20px">
-            "No matter how many puzzles life gives us,
-            I just want to solve every one of them with you." 💙
-        </p>
-
-        <div class="signature">
-            — SAHIL ❤️
-        </div>
-
-    </div>
-
-</section>
 
 
 <script>
 
-/* =========================================
-   SCREEN FUNCTION
-========================================= */
+let score = 0;
 
-function showScreen(id){
+const song =
+    document.getElementById("loveSong");
 
-    document.querySelectorAll(".screen").forEach(function(screen){
-        screen.classList.remove("active");
-    });
+const heart =
+    document.getElementById("heart");
 
-    var target = document.getElementById(id);
+const gameArea =
+    document.getElementById("gameArea");
 
-    if(target){
-        target.classList.add("active");
-    }
-}
+const scoreText =
+    document.getElementById("score");
+
+const message =
+    document.getElementById("gameMessage");
+
+const nextButton =
+    document.getElementById("nextButton");
 
 
-/* =========================================
-   START BUTTON
-========================================= */
 
-var startButton = document.getElementById("startButton");
-var loveSong = document.getElementById("loveSong");
+/* =========================
+   START GAME
+========================= */
 
-startButton.addEventListener("click", function(){
+function startGame(){
 
     /*
-       IMPORTANT:
-       Music and screen change happen
-       from the same user click.
+      IMPORTANT:
+      Audio starts because this
+      function is triggered by
+      the START button click.
     */
 
-    loveSong.volume = 0.75;
+    song.play().catch(function(error){
 
-    var playPromise = loveSong.play();
+        console.log(
+            "Audio playback error:",
+            error
+        );
 
-    if(playPromise !== undefined){
-        playPromise.catch(function(error){
-            console.log("Music could not start:",error);
-        });
-    }
-
-    showScreen("heartScreen");
-
-    startHeartGame();
-
-});
+    });
 
 
-/* =========================================
-   HEART GAME
-========================================= */
+    document
+        .getElementById("startPage")
+        .classList.remove("active");
 
-var heartCount = 0;
-var gameArea = document.getElementById("gameArea");
 
-function startHeartGame(){
+    document
+        .getElementById("heartPage")
+        .classList.add("active");
 
-    heartCount = 0;
 
-    document.getElementById("heartCount").textContent = "0";
-    document.getElementById("gameProgress").style.width = "0%";
+    setTimeout(function(){
 
-    document.getElementById("gameText").textContent =
-        "Catch the glowing heart! 💙";
+        moveHeart();
 
-    createHeart();
+    },500);
 }
 
 
-function createHeart(){
 
-    gameArea.innerHTML = "";
+/* =========================
+   MOVE HEART
+========================= */
 
-    if(heartCount >= 10){
+function moveHeart(){
 
-        document.getElementById("gameText").textContent =
-            "Amazing! ❤️ All hearts caught!";
-
-        setTimeout(function(){
-            showScreen("quiz1");
-        },1000);
-
+    if(score >= 10){
         return;
     }
 
-    var heart = document.createElement("div");
 
-    heart.className = "catch-heart";
-    heart.textContent = "💙";
+    const width =
+        gameArea.clientWidth;
 
-    var maxX = gameArea.clientWidth - 60;
-    var maxY = gameArea.clientHeight - 60;
+    const height =
+        gameArea.clientHeight;
+
+
+    const heartSize = 65;
+
+
+    const x =
+        Math.random() *
+        (width - heartSize);
+
+
+    const y =
+        Math.random() *
+        (height - heartSize);
+
 
     heart.style.left =
-        Math.max(5,Math.random() * maxX) + "px";
+        x + "px";
+
 
     heart.style.top =
-        Math.max(5,Math.random() * maxY) + "px";
+        y + "px";
 
-    heart.addEventListener("click",function(){
 
-        heartCount++;
+    heart.style.display =
+        "block";
 
-        document.getElementById("heartCount").textContent =
-            heartCount;
 
-        document.getElementById("gameProgress").style.width =
-            (heartCount * 10) + "%";
+    /* restart animation */
 
-        if(heartCount >= 10){
+    heart.style.animation =
+        "none";
 
-            gameArea.innerHTML = "";
+    void heart.offsetWidth;
 
-            document.getElementById("gameText").textContent =
-                "Perfect! 🥹❤️ You caught all my hearts!";
-
-            setTimeout(function(){
-                showScreen("quiz1");
-            },1000);
-
-        }else{
-
-            createHeart();
-
-        }
-
-    });
-
-    gameArea.appendChild(heart);
+    heart.style.animation =
+        "heartPop .3s ease";
 }
 
 
-/* =========================================
-   GENERIC QUIZ SYSTEM
-========================================= */
 
-function setupQuiz(buttonSelector,messageId,nextId,correctMessage){
+/* =========================
+   CATCH HEART
+========================= */
 
-    var buttons = document.querySelectorAll(buttonSelector);
+function catchHeart(){
 
-    buttons.forEach(function(button){
+    score++;
 
-        button.addEventListener("click",function(){
 
-            if(button.disabled) return;
+    scoreText.textContent =
+        score;
 
-            var isCorrect =
-                button.getAttribute("data-correct") === "true" ||
-                button.getAttribute("data-answer") === "correct";
 
-            if(isCorrect){
+    if(score === 1){
 
-                buttons.forEach(function(b){
-                    b.disabled = true;
-                });
+        message.textContent =
+        "Awww... you caught my heart. 🥹💙";
 
-                button.classList.add("correct");
+    }
 
-                document.getElementById(messageId).textContent =
-                    correctMessage;
+    else if(score === 3){
 
-                document.getElementById(nextId).classList.add("ready");
+        message.textContent =
+        "That's my Baby! 😘💙";
 
-            }else{
+    }
 
-                button.classList.add("wrong");
+    else if(score === 5){
 
-                document.getElementById(messageId).textContent =
-                    "Nooo 😭 Try again Baby!";
+        message.textContent =
+        "Halfway to my heart... ❤️";
 
-                setTimeout(function(){
-                    button.classList.remove("wrong");
-                },500);
+    }
 
-            }
+    else if(score === 7){
 
-        });
+        message.textContent =
+        "You're getting closer, Zeya... 🥹";
 
-    });
+    }
+
+    else if(score === 9){
+
+        message.textContent =
+        "One more, Baby... 💙";
+
+    }
+
+
+    /* COMPLETE */
+
+    if(score >= 10){
+
+        heart.style.display =
+            "none";
+
+
+        message.innerHTML =
+        "You caught all my hearts... ❤️<br>" +
+        "But my biggest heart was already yours. 🥹💙";
+
+
+        nextButton.style.display =
+            "block";
+
+    }
+
+    else{
+
+        moveHeart();
+
+    }
 
 }
 
 
-/* FOOD */
 
-setupQuiz(
-    ".food",
-    "foodMessage",
-    "next1",
-    "Correct! 🍫🍜 Of course I know my Baby's favourite food. 🥹💙"
-);
+/* =========================
+   NEXT PAGE
+========================= */
 
+function nextPage(){
 
-/* MONTH */
+    /*
+      NEXT STEP:
+      Page 3 Puzzle will be added here.
+    */
 
-setupQuiz(
-    ".month",
-    "monthMessage",
-    "next2",
-    "Correct! 🌸 March — the month my favourite person was born. 💙"
-);
+    alert(
+        "❤️ Catch My Heart Complete! ❤️\n\n" +
+        "Next puzzle is coming..."
+    );
 
-
-/* COLOUR */
-
-setupQuiz(
-    ".colour",
-    "colourMessage",
-    "next3",
-    "Correct! 💙 Blue — just like the colour of this little love story."
-);
-
-
-/* NICKNAME */
-
-setupQuiz(
-    ".nickname",
-    "nicknameMessage",
-    "next4",
-    "Correct! 🧸 Baby — the cutest name for the cutest person. ❤️"
-);
-
-
-/* FINAL */
-
-setupQuiz(
-    ".finalLetter",
-    "finalMessage",
-    "finishButton",
-    "B + A + B + Y = BABY 💙 Final message unlocked!"
-);
-
-
-/* =========================================
-   NEXT BUTTONS
-========================================= */
-
-document.getElementById("next1").addEventListener("click",function(){
-    showScreen("quiz2");
-});
-
-document.getElementById("next2").addEventListener("click",function(){
-    showScreen("quiz3");
-});
-
-document.getElementById("next3").addEventListener("click",function(){
-    showScreen("quiz4");
-});
-
-document.getElementById("next4").addEventListener("click",function(){
-    showScreen("quiz5");
-});
-
-document.getElementById("finishButton").addEventListener("click",function(){
-    showScreen("finalScreen");
-    loveSong.volume = 0.8;
-});
+}
 
 </script>
 
