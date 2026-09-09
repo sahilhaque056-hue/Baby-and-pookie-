@@ -7,217 +7,172 @@
 
 <style>
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    -webkit-tap-highlight-color:transparent;
 }
 
 body{
-    min-height:100vh;
+    width:100%;
+    height:100vh;
     overflow:hidden;
-    background:
-        radial-gradient(circle at 20% 20%, #173d72 0%, transparent 35%),
-        radial-gradient(circle at 80% 80%, #10295c 0%, transparent 35%),
-        linear-gradient(135deg,#020817,#061632,#020817);
+    background:linear-gradient(145deg,#020817,#061936,#020817);
     color:white;
+    font-family:Arial,sans-serif;
 }
 
 .screen{
     position:absolute;
     inset:0;
     display:none;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     padding:20px;
 }
 
 .screen.active{
     display:flex;
-    animation:fadeIn .6s ease;
 }
 
-@keyframes fadeIn{
-    from{opacity:0;transform:scale(.96)}
-    to{opacity:1;transform:scale(1)}
-}
-
-/* Background particles */
-.bg-heart{
-    position:fixed;
-    color:#4da3ff;
-    opacity:.18;
-    font-size:25px;
-    animation:float 7s linear infinite;
-    pointer-events:none;
-}
-
-@keyframes float{
-    0%{transform:translateY(110vh) rotate(0deg);opacity:0}
-    15%{opacity:.2}
-    100%{transform:translateY(-15vh) rotate(360deg);opacity:0}
-}
-
-/* Common card */
 .card{
-    width:min(430px,94vw);
+    width:100%;
+    max-width:430px;
     padding:30px 22px;
-    border:1px solid rgba(100,180,255,.25);
-    border-radius:28px;
-    background:rgba(5,18,42,.72);
-    backdrop-filter:blur(18px);
-    box-shadow:
-        0 0 40px rgba(0,119,255,.16),
-        inset 0 0 25px rgba(70,150,255,.04);
     text-align:center;
+    border-radius:28px;
+    background:rgba(7,22,48,.88);
+    border:1px solid rgba(70,160,255,.3);
+    box-shadow:0 0 45px rgba(0,120,255,.25);
 }
 
 .small{
-    color:#7ebcff;
-    font-size:13px;
+    color:#66b4ff;
+    font-size:12px;
     letter-spacing:3px;
-    text-transform:uppercase;
     margin-bottom:12px;
 }
 
 h1{
-    font-size:34px;
+    font-size:36px;
     margin-bottom:12px;
 }
 
 h2{
-    font-size:26px;
-    margin-bottom:12px;
+    font-size:27px;
+    margin-bottom:10px;
 }
 
 p{
-    color:#b9c9df;
+    color:#b9c9dc;
     line-height:1.6;
 }
 
-.glow{
-    color:#fff;
-    text-shadow:0 0 15px #238cff;
-}
-
-button{
-    border:0;
-    cursor:pointer;
-    color:white;
-}
-
-.main-btn{
-    width:100%;
-    margin-top:25px;
-    padding:15px;
-    border-radius:50px;
-    background:linear-gradient(135deg,#087cff,#0050c7);
-    font-size:17px;
-    font-weight:bold;
-    box-shadow:0 0 25px rgba(0,126,255,.45);
-    transition:.25s;
-}
-
-.main-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 35px rgba(0,126,255,.7);
-}
-
-.main-btn:disabled{
-    opacity:.35;
-    cursor:not-allowed;
-}
-
-/* START */
-.big-heart{
+.heart-big{
     font-size:75px;
-    animation:pulse 1.5s infinite;
-    margin-bottom:15px;
+    margin-bottom:10px;
+    animation:pulse 1.4s infinite;
 }
 
 @keyframes pulse{
-    50%{transform:scale(1.13);filter:drop-shadow(0 0 20px #168cff)}
+    50%{
+        transform:scale(1.15);
+        filter:drop-shadow(0 0 22px #198cff);
+    }
 }
 
-/* GAME */
+.start-btn{
+    width:100%;
+    margin-top:25px;
+    padding:16px;
+    border:0;
+    border-radius:50px;
+    color:white;
+    background:linear-gradient(135deg,#087cff,#0054cc);
+    font-size:17px;
+    font-weight:bold;
+    box-shadow:0 0 25px rgba(0,120,255,.5);
+    cursor:pointer;
+}
+
+.start-btn:active{
+    transform:scale(.97);
+}
+
+/* HEART GAME */
+
 .game-card{
-    width:min(500px,94vw);
+    width:100%;
+    max-width:500px;
     text-align:center;
 }
 
 .game-top{
     display:flex;
     justify-content:space-between;
-    margin-bottom:18px;
-    color:#9ecbff;
-    font-size:14px;
+    margin:15px 3px;
+    color:#8bc5ff;
 }
 
 .game-area{
     position:relative;
-    height:430px;
+    width:100%;
+    height:420px;
     overflow:hidden;
     border-radius:25px;
-    border:1px solid rgba(100,170,255,.22);
-    background:
-        radial-gradient(circle,#0d2d5c 1px,transparent 1px);
-    background-size:25px 25px;
-    background-color:rgba(0,10,25,.65);
+    background:rgba(2,12,30,.8);
+    border:1px solid rgba(70,160,255,.3);
 }
 
-.game-heart{
+.catch-heart{
     position:absolute;
-    font-size:42px;
+    font-size:45px;
     cursor:pointer;
     user-select:none;
-    animation:heartGlow .8s infinite alternate;
-    filter:drop-shadow(0 0 12px #168cff);
+    animation:heartPulse .8s infinite alternate;
 }
 
-@keyframes heartGlow{
-    to{transform:scale(1.18)}
-}
-
-.game-info{
-    margin-top:15px;
+@keyframes heartPulse{
+    from{transform:scale(.9)}
+    to{
+        transform:scale(1.18);
+        filter:drop-shadow(0 0 15px #168cff);
+    }
 }
 
 .progress-bg{
     height:8px;
-    background:#12233e;
-    border-radius:10px;
-    margin-top:10px;
-    overflow:hidden;
+    background:#15233b;
+    border-radius:20px;
+    margin-top:12px;
 }
 
 .progress{
     height:100%;
     width:0%;
-    background:linear-gradient(90deg,#087cff,#64b7ff);
-    transition:.3s;
+    border-radius:20px;
+    background:#168cff;
+    transition:.25s;
 }
 
 /* QUIZ */
+
 .quiz-card{
-    width:min(460px,94vw);
+    width:100%;
+    max-width:440px;
 }
 
-.quiz-head{
+.quiz-top{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    margin-bottom:22px;
-}
-
-.page-count{
-    font-size:13px;
-    color:#76baff;
+    color:#70baff;
+    margin-bottom:25px;
 }
 
 .question{
-    font-size:23px;
+    font-size:22px;
     font-weight:bold;
-    line-height:1.35;
+    line-height:1.4;
     margin-bottom:22px;
 }
 
@@ -229,137 +184,118 @@ button{
 .option{
     width:100%;
     padding:15px;
-    border-radius:16px;
-    border:1px solid rgba(95,166,255,.25);
-    background:rgba(16,39,75,.6);
+    border-radius:15px;
+    border:1px solid rgba(80,160,255,.25);
+    background:#0c2548;
     color:white;
     font-size:16px;
-    transition:.25s;
+    cursor:pointer;
 }
 
-.option:hover{
-    border-color:#268dff;
-    transform:translateY(-2px);
+.option:active{
+    transform:scale(.98);
 }
 
 .option.correct{
-    background:rgba(0,160,100,.3);
-    border-color:#36e5a1;
+    background:#075b45;
+    border-color:#39e5ad;
 }
 
 .option.wrong{
-    background:rgba(200,30,60,.25);
-    border-color:#ff5475;
-    animation:shake .3s;
-}
-
-@keyframes shake{
-    25%{transform:translateX(-5px)}
-    50%{transform:translateX(5px)}
-    75%{transform:translateX(-4px)}
+    background:#652238;
+    border-color:#ff5578;
 }
 
 .message{
-    min-height:25px;
+    min-height:24px;
     margin-top:15px;
+    color:#7fc0ff;
     font-size:14px;
-    color:#8ec7ff;
 }
 
-.next-btn{
-    margin-top:18px;
+.next{
     width:100%;
+    margin-top:18px;
     padding:14px;
+    border:0;
     border-radius:15px;
-    background:#086fdc;
+    background:#087cff;
+    color:white;
     font-weight:bold;
-    opacity:.4;
+    opacity:.35;
     pointer-events:none;
 }
 
-.next-btn.ready{
+.next.ready{
     opacity:1;
     pointer-events:auto;
 }
 
 /* FINAL */
+
 .final-heart{
-    font-size:70px;
-    animation:pulse 1.5s infinite;
+    font-size:75px;
+    animation:pulse 1.4s infinite;
 }
 
 .details{
-    margin-top:20px;
     display:grid;
-    gap:10px;
+    gap:9px;
+    margin-top:20px;
 }
 
 .detail{
-    padding:13px;
-    border-radius:14px;
-    background:rgba(20,53,95,.55);
-    border:1px solid rgba(90,170,255,.2);
+    padding:12px;
+    border-radius:13px;
+    background:#0b274b;
+    color:#c8ddf5;
 }
 
 .detail b{
-    color:#72baff;
-}
-
-.love-message{
-    margin-top:20px;
-    color:#d6e7ff;
-    font-size:15px;
+    color:#66b5ff;
 }
 
 .signature{
     margin-top:22px;
-    color:#63afff;
-    font-weight:bold;
+    color:#65b5ff;
     letter-spacing:2px;
-}
-
-@media(max-height:700px){
-    .game-area{height:340px}
+    font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Background hearts -->
-<div class="bg-heart" style="left:8%;animation-delay:0s">♥</div>
-<div class="bg-heart" style="left:25%;animation-delay:2s">♡</div>
-<div class="bg-heart" style="left:47%;animation-delay:4s">♥</div>
-<div class="bg-heart" style="left:70%;animation-delay:1s">♡</div>
-<div class="bg-heart" style="left:88%;animation-delay:3s">♥</div>
-
 <!-- MUSIC -->
 <audio id="loveSong" loop preload="auto">
     <source src="sahil%20love.mp3" type="audio/mpeg">
 </audio>
 
+
 <!-- ================= START ================= -->
-<section id="start" class="screen active">
+
+<section id="startScreen" class="screen active">
 
     <div class="card">
 
-        <div class="big-heart">💙</div>
+        <div class="heart-big">💙</div>
 
-        <div class="small">A Little Game For</div>
+        <div class="small">A LITTLE GAME FOR</div>
 
-        <h1 class="glow">My Baby</h1>
+        <h1>My Baby</h1>
 
         <p>
-            This isn't just a game...<br>
-            It's a tiny journey made specially for you. 🥹💙
+            Ek chhota sa game hai tumhare liye... 🥹<br>
+            Pehle mere hearts catch karo,<br>
+            phir Zeya ke baare mein puzzles solve karo. ❤️
         </p>
 
-        <button class="main-btn" onclick="startGame()">
+        <button id="startButton" class="start-btn">
             START OUR GAME ❤️
         </button>
 
-        <p style="margin-top:15px;font-size:12px;">
-            🎵 Turn your volume up
+        <p style="font-size:12px;margin-top:15px;">
+            🎵 Music starts with the game
         </p>
 
     </div>
@@ -368,28 +304,29 @@ button{
 
 
 <!-- ================= HEART GAME ================= -->
-<section id="heartGame" class="screen">
+
+<section id="heartScreen" class="screen">
 
     <div class="game-card">
 
-        <div class="small">Level 1</div>
+        <div class="small">LEVEL 1</div>
 
         <h2>Catch My Hearts 💙</h2>
 
-        <p>Catch <b>10 hearts</b> to unlock the next surprise.</p>
+        <p>Catch all <b>10 hearts</b> to unlock the puzzles.</p>
 
         <div class="game-top">
-            <span>Hearts: <b id="heartScore">0</b>/10</span>
-            <span>Level ❤️</span>
+            <span>❤️ <b id="heartCount">0</b>/10</span>
+            <span>Level 1</span>
         </div>
 
-        <div class="game-area" id="gameArea"></div>
+        <div id="gameArea" class="game-area"></div>
 
-        <div class="game-info">
-            <p id="gameMessage">Catch the glowing heart! 💙</p>
+        <div style="margin-top:15px">
+            <p id="gameText">Catch the glowing heart! 💙</p>
 
             <div class="progress-bg">
-                <div class="progress" id="gameProgress"></div>
+                <div id="gameProgress" class="progress"></div>
             </div>
         </div>
 
@@ -399,13 +336,14 @@ button{
 
 
 <!-- ================= QUIZ 1 ================= -->
+
 <section id="quiz1" class="screen">
 
-    <div class="quiz-card card">
+    <div class="card quiz-card">
 
-        <div class="quiz-head">
-            <span class="small">Puzzle 1</span>
-            <span class="page-count">1 / 5</span>
+        <div class="quiz-top">
+            <span>Puzzle 1</span>
+            <span>1 / 5</span>
         </div>
 
         <div class="question">
@@ -414,27 +352,27 @@ button{
 
         <div class="options">
 
-            <button class="option" onclick="foodAnswer(this,'pizza')">
+            <button class="option food" data-answer="wrong">
                 🍕 Pizza & Burger
             </button>
 
-            <button class="option" onclick="foodAnswer(this,'correct')">
+            <button class="option food" data-answer="correct">
                 🍫 Chocolate & Maggie
             </button>
 
-            <button class="option" onclick="foodAnswer(this,'biryani')">
+            <button class="option food" data-answer="wrong">
                 🍗 Biryani & Kebab
             </button>
 
-            <button class="option" onclick="foodAnswer(this,'pasta')">
+            <button class="option food" data-answer="wrong">
                 🍝 Pasta & Fries
             </button>
 
         </div>
 
-        <div class="message" id="foodMsg"></div>
+        <div id="foodMessage" class="message"></div>
 
-        <button class="next-btn" id="next1" onclick="showScreen('quiz2')">
+        <button id="next1" class="next">
             NEXT PUZZLE →
         </button>
 
@@ -444,42 +382,37 @@ button{
 
 
 <!-- ================= QUIZ 2 ================= -->
+
 <section id="quiz2" class="screen">
 
-    <div class="quiz-card card">
+    <div class="card quiz-card">
 
-        <div class="quiz-head">
-            <span class="small">Puzzle 2</span>
-            <span class="page-count">2 / 5</span>
+        <div class="quiz-top">
+            <span>Puzzle 2</span>
+            <span>2 / 5</span>
         </div>
 
         <div class="question">
-            In which month was my Baby born? 🎂
+            Baby's birthday month is...? 🎂
         </div>
 
         <div class="options">
 
-            <button class="option" onclick="monthAnswer(this,'January')">
-                January
-            </button>
+            <button class="option month">January</button>
 
-            <button class="option" onclick="monthAnswer(this,'March')">
+            <button class="option month" data-correct="true">
                 March 🌸
             </button>
 
-            <button class="option" onclick="monthAnswer(this,'July')">
-                July
-            </button>
+            <button class="option month">July</button>
 
-            <button class="option" onclick="monthAnswer(this,'December')">
-                December
-            </button>
+            <button class="option month">December</button>
 
         </div>
 
-        <div class="message" id="monthMsg"></div>
+        <div id="monthMessage" class="message"></div>
 
-        <button class="next-btn" id="next2" onclick="showScreen('quiz3')">
+        <button id="next2" class="next">
             NEXT PUZZLE →
         </button>
 
@@ -489,13 +422,14 @@ button{
 
 
 <!-- ================= QUIZ 3 ================= -->
+
 <section id="quiz3" class="screen">
 
-    <div class="quiz-card card">
+    <div class="card quiz-card">
 
-        <div class="quiz-head">
-            <span class="small">Puzzle 3</span>
-            <span class="page-count">3 / 5</span>
+        <div class="quiz-top">
+            <span>Puzzle 3</span>
+            <span>3 / 5</span>
         </div>
 
         <div class="question">
@@ -504,27 +438,21 @@ button{
 
         <div class="options">
 
-            <button class="option" onclick="colourAnswer(this,'Red')">
-                ❤️ Red
-            </button>
+            <button class="option colour">❤️ Red</button>
 
-            <button class="option" onclick="colourAnswer(this,'Black')">
-                🖤 Black
-            </button>
+            <button class="option colour">🖤 Black</button>
 
-            <button class="option" onclick="colourAnswer(this,'Blue')">
+            <button class="option colour" data-correct="true">
                 💙 Blue
             </button>
 
-            <button class="option" onclick="colourAnswer(this,'Pink')">
-                🩷 Pink
-            </button>
+            <button class="option colour">🩷 Pink</button>
 
         </div>
 
-        <div class="message" id="colourMsg"></div>
+        <div id="colourMessage" class="message"></div>
 
-        <button class="next-btn" id="next3" onclick="showScreen('quiz4')">
+        <button id="next3" class="next">
             NEXT PUZZLE →
         </button>
 
@@ -534,42 +462,37 @@ button{
 
 
 <!-- ================= QUIZ 4 ================= -->
+
 <section id="quiz4" class="screen">
 
-    <div class="quiz-card card">
+    <div class="card quiz-card">
 
-        <div class="quiz-head">
-            <span class="small">Puzzle 4</span>
-            <span class="page-count">4 / 5</span>
+        <div class="quiz-top">
+            <span>Puzzle 4</span>
+            <span>4 / 5</span>
         </div>
 
         <div class="question">
-            What do I call my favourite person? 🧸
+            What is my cutest nickname for you? 🧸
         </div>
 
         <div class="options">
 
-            <button class="option" onclick="nameAnswer(this,'Angel')">
-                Angel
-            </button>
+            <button class="option nickname">Angel</button>
 
-            <button class="option" onclick="nameAnswer(this,'Princess')">
-                Princess
-            </button>
+            <button class="option nickname">Princess</button>
 
-            <button class="option" onclick="nameAnswer(this,'Baby')">
+            <button class="option nickname" data-correct="true">
                 Baby 💙
             </button>
 
-            <button class="option" onclick="nameAnswer(this,'Queen')">
-                Queen
-            </button>
+            <button class="option nickname">Queen</button>
 
         </div>
 
-        <div class="message" id="nameMsg"></div>
+        <div id="nicknameMessage" class="message"></div>
 
-        <button class="next-btn" id="next4" onclick="showScreen('quiz5')">
+        <button id="next4" class="next">
             FINAL PUZZLE →
         </button>
 
@@ -579,44 +502,41 @@ button{
 
 
 <!-- ================= QUIZ 5 ================= -->
+
 <section id="quiz5" class="screen">
 
-    <div class="quiz-card card">
+    <div class="card quiz-card">
 
-        <div class="quiz-head">
-            <span class="small">Final Puzzle</span>
-            <span class="page-count">5 / 5</span>
+        <div class="quiz-top">
+            <span>Final Puzzle</span>
+            <span>5 / 5</span>
         </div>
 
         <div class="question">
-            Complete the secret word... 💙
-            <br>
-            <span style="color:#65b4ff">B _ B Y</span>
+            Complete the secret word 💙
+            <br><br>
+            <span style="color:#69b7ff;font-size:30px">
+                B _ B Y
+            </span>
         </div>
 
         <div class="options">
 
-            <button class="option" onclick="finalAnswer(this,'A')">
+            <button class="option finalLetter">E</button>
+
+            <button class="option finalLetter" data-correct="true">
                 A
             </button>
 
-            <button class="option" onclick="finalAnswer(this,'E')">
-                E
-            </button>
+            <button class="option finalLetter">I</button>
 
-            <button class="option" onclick="finalAnswer(this,'I')">
-                I
-            </button>
-
-            <button class="option" onclick="finalAnswer(this,'O')">
-                O
-            </button>
+            <button class="option finalLetter">O</button>
 
         </div>
 
-        <div class="message" id="finalMsg"></div>
+        <div id="finalMessage" class="message"></div>
 
-        <button class="next-btn" id="finishBtn" onclick="finishGame()">
+        <button id="finishButton" class="next">
             UNLOCK MY MESSAGE 💙
         </button>
 
@@ -626,61 +546,53 @@ button{
 
 
 <!-- ================= FINAL ================= -->
-<section id="final" class="screen">
+
+<section id="finalScreen" class="screen">
 
     <div class="card">
 
         <div class="final-heart">💙</div>
 
-        <div class="small">Game Completed</div>
+        <div class="small">GAME COMPLETED</div>
 
-        <h1 class="glow">You Know My Baby 🥹</h1>
+        <h1>You Know My Baby 🥹</h1>
 
         <p>
-            You completed every puzzle...
-            but the real prize was you. ❤️
+            You solved every puzzle...<br>
+            but the best part of this game is still you. ❤️
         </p>
 
         <div class="details">
 
             <div class="detail">
-                🍫 Favourite Food:
-                <b>Chocolate</b>
+                🍫 Favourite Food — <b>Chocolate</b>
             </div>
 
             <div class="detail">
-                🍜 Favourite Food:
-                <b>Maggie</b>
+                🍜 Favourite Food — <b>Maggie</b>
             </div>
 
             <div class="detail">
-                🎂 Birthday Month:
-                <b>March</b>
+                🎂 Birthday Month — <b>March</b>
             </div>
 
             <div class="detail">
-                💙 Favourite Colour:
-                <b>Blue</b>
+                💙 Favourite Colour — <b>Blue</b>
             </div>
 
             <div class="detail">
-                🧸 My Nickname For You:
-                <b>Baby</b>
+                🧸 Nickname — <b>Baby</b>
             </div>
 
         </div>
 
-        <div class="love-message">
+        <p style="margin-top:20px">
             "No matter how many puzzles life gives us,
-            I just want to solve every one of them
-            with you." 💙
-            <br><br>
-            <b>You're not just my favourite person...</b><br>
-            You're my favourite part of every day. 🥹❤️
-        </div>
+            I just want to solve every one of them with you." 💙
+        </p>
 
         <div class="signature">
-            — Sahil ❤️
+            — SAHIL ❤️
         </div>
 
     </div>
@@ -690,274 +602,267 @@ button{
 
 <script>
 
-const song = document.getElementById("loveSong");
-
-let currentScreen = "start";
-let score = 0;
-let hearts = 0;
-let heartTimer;
-
-
-/* ================= SCREEN SYSTEM ================= */
+/* =========================================
+   SCREEN FUNCTION
+========================================= */
 
 function showScreen(id){
 
-    document.querySelectorAll(".screen").forEach(screen=>{
+    document.querySelectorAll(".screen").forEach(function(screen){
         screen.classList.remove("active");
     });
 
-    document.getElementById(id).classList.add("active");
+    var target = document.getElementById(id);
 
-    currentScreen = id;
+    if(target){
+        target.classList.add("active");
+    }
 }
 
 
-/* ================= START ================= */
+/* =========================================
+   START BUTTON
+========================================= */
 
-function startGame(){
+var startButton = document.getElementById("startButton");
+var loveSong = document.getElementById("loveSong");
 
-    // Start music from the same user click
-    song.volume = 0.75;
+startButton.addEventListener("click", function(){
 
-    song.play().catch(()=>{
-        console.log("Audio waiting for browser permission");
-    });
+    /*
+       IMPORTANT:
+       Music and screen change happen
+       from the same user click.
+    */
 
-    showScreen("heartGame");
+    loveSong.volume = 0.75;
+
+    var playPromise = loveSong.play();
+
+    if(playPromise !== undefined){
+        playPromise.catch(function(error){
+            console.log("Music could not start:",error);
+        });
+    }
+
+    showScreen("heartScreen");
 
     startHeartGame();
-}
+
+});
 
 
-/* ================= HEART GAME ================= */
+/* =========================================
+   HEART GAME
+========================================= */
+
+var heartCount = 0;
+var gameArea = document.getElementById("gameArea");
 
 function startHeartGame(){
 
-    hearts = 0;
+    heartCount = 0;
 
-    document.getElementById("heartScore").textContent = "0";
+    document.getElementById("heartCount").textContent = "0";
     document.getElementById("gameProgress").style.width = "0%";
-    document.getElementById("gameMessage").textContent =
+
+    document.getElementById("gameText").textContent =
         "Catch the glowing heart! 💙";
 
-    spawnHeart();
+    createHeart();
 }
 
 
-function spawnHeart(){
+function createHeart(){
 
-    if(hearts >= 10) return;
+    gameArea.innerHTML = "";
 
-    const area = document.getElementById("gameArea");
+    if(heartCount >= 10){
 
-    // Remove old hearts
-    area.innerHTML = "";
+        document.getElementById("gameText").textContent =
+            "Amazing! ❤️ All hearts caught!";
 
-    const heart = document.createElement("div");
+        setTimeout(function(){
+            showScreen("quiz1");
+        },1000);
 
-    heart.className = "game-heart";
-    heart.innerHTML = "💙";
+        return;
+    }
 
-    const maxX = area.clientWidth - 55;
-    const maxY = area.clientHeight - 55;
+    var heart = document.createElement("div");
+
+    heart.className = "catch-heart";
+    heart.textContent = "💙";
+
+    var maxX = gameArea.clientWidth - 60;
+    var maxY = gameArea.clientHeight - 60;
 
     heart.style.left =
-        Math.max(5,Math.random()*maxX) + "px";
+        Math.max(5,Math.random() * maxX) + "px";
 
     heart.style.top =
-        Math.max(5,Math.random()*maxY) + "px";
+        Math.max(5,Math.random() * maxY) + "px";
 
-    heart.onclick = function(){
+    heart.addEventListener("click",function(){
 
-        hearts++;
+        heartCount++;
 
-        document.getElementById("heartScore").textContent = hearts;
+        document.getElementById("heartCount").textContent =
+            heartCount;
 
         document.getElementById("gameProgress").style.width =
-            (hearts * 10) + "%";
+            (heartCount * 10) + "%";
 
-        if(hearts >= 10){
+        if(heartCount >= 10){
 
-            area.innerHTML = "";
+            gameArea.innerHTML = "";
 
-            document.getElementById("gameMessage").innerHTML =
+            document.getElementById("gameText").textContent =
                 "Perfect! 🥹❤️ You caught all my hearts!";
 
-            setTimeout(()=>{
+            setTimeout(function(){
                 showScreen("quiz1");
-            },1200);
+            },1000);
 
         }else{
 
-            document.getElementById("gameMessage").textContent =
-                "Yesss! Catch the next one 💙";
+            createHeart();
 
-            spawnHeart();
         }
-    };
 
-    area.appendChild(heart);
+    });
+
+    gameArea.appendChild(heart);
 }
 
 
-/* ================= FOOD ================= */
+/* =========================================
+   GENERIC QUIZ SYSTEM
+========================================= */
 
-function foodAnswer(btn,answer){
+function setupQuiz(buttonSelector,messageId,nextId,correctMessage){
 
-    const buttons = btn.parentElement.querySelectorAll(".option");
+    var buttons = document.querySelectorAll(buttonSelector);
 
-    if(answer === "correct"){
+    buttons.forEach(function(button){
 
-        buttons.forEach(b=>b.disabled=true);
+        button.addEventListener("click",function(){
 
-        btn.classList.add("correct");
+            if(button.disabled) return;
 
-        document.getElementById("foodMsg").textContent =
-            "Correct! 🍫🍜 Of course... I know my Baby's taste. 🥹💙";
+            var isCorrect =
+                button.getAttribute("data-correct") === "true" ||
+                button.getAttribute("data-answer") === "correct";
 
-        score++;
+            if(isCorrect){
 
-        document.getElementById("next1").classList.add("ready");
+                buttons.forEach(function(b){
+                    b.disabled = true;
+                });
 
-    }else{
+                button.classList.add("correct");
 
-        btn.classList.add("wrong");
+                document.getElementById(messageId).textContent =
+                    correctMessage;
 
-        document.getElementById("foodMsg").textContent =
-            "Nooo 😭 That's not Baby's favourite. Try again!";
-    }
+                document.getElementById(nextId).classList.add("ready");
+
+            }else{
+
+                button.classList.add("wrong");
+
+                document.getElementById(messageId).textContent =
+                    "Nooo 😭 Try again Baby!";
+
+                setTimeout(function(){
+                    button.classList.remove("wrong");
+                },500);
+
+            }
+
+        });
+
+    });
+
 }
 
 
-/* ================= MONTH ================= */
+/* FOOD */
 
-function monthAnswer(btn,answer){
-
-    const buttons = btn.parentElement.querySelectorAll(".option");
-
-    if(answer === "March"){
-
-        buttons.forEach(b=>b.disabled=true);
-
-        btn.classList.add("correct");
-
-        document.getElementById("monthMsg").textContent =
-            "Correct! 🌸 March — the month my favourite person was born. 💙";
-
-        score++;
-
-        document.getElementById("next2").classList.add("ready");
-
-    }else{
-
-        btn.classList.add("wrong");
-
-        document.getElementById("monthMsg").textContent =
-            "Wrong month 😭 Think again, Baby!";
-    }
-}
+setupQuiz(
+    ".food",
+    "foodMessage",
+    "next1",
+    "Correct! 🍫🍜 Of course I know my Baby's favourite food. 🥹💙"
+);
 
 
-/* ================= COLOUR ================= */
+/* MONTH */
 
-function colourAnswer(btn,answer){
-
-    const buttons = btn.parentElement.querySelectorAll(".option");
-
-    if(answer === "Blue"){
-
-        buttons.forEach(b=>b.disabled=true);
-
-        btn.classList.add("correct");
-
-        document.getElementById("colourMsg").textContent =
-            "Correct! 💙 Blue looks even more beautiful because it's your favourite.";
-
-        score++;
-
-        document.getElementById("next3").classList.add("ready");
-
-    }else{
-
-        btn.classList.add("wrong");
-
-        document.getElementById("colourMsg").textContent =
-            "Not that one 😭 Try again!";
-    }
-}
+setupQuiz(
+    ".month",
+    "monthMessage",
+    "next2",
+    "Correct! 🌸 March — the month my favourite person was born. 💙"
+);
 
 
-/* ================= NICKNAME ================= */
+/* COLOUR */
 
-function nameAnswer(btn,answer){
-
-    const buttons = btn.parentElement.querySelectorAll(".option");
-
-    if(answer === "Baby"){
-
-        buttons.forEach(b=>b.disabled=true);
-
-        btn.classList.add("correct");
-
-        document.getElementById("nameMsg").textContent =
-            "Correct! 🧸 Baby... the cutest name ever. ❤️";
-
-        score++;
-
-        document.getElementById("next4").classList.add("ready");
-
-    }else{
-
-        btn.classList.add("wrong");
-
-        document.getElementById("nameMsg").textContent =
-            "Nope 😭 Only one name has my heart.";
-    }
-}
+setupQuiz(
+    ".colour",
+    "colourMessage",
+    "next3",
+    "Correct! 💙 Blue — just like the colour of this little love story."
+);
 
 
-/* ================= FINAL PUZZLE ================= */
+/* NICKNAME */
 
-function finalAnswer(btn,answer){
-
-    const buttons = btn.parentElement.querySelectorAll(".option");
-
-    if(answer === "A"){
-
-        buttons.forEach(b=>b.disabled=true);
-
-        btn.classList.add("correct");
-
-        document.getElementById("finalMsg").textContent =
-            "B + A + B + Y = BABY 💙 You unlocked the final message!";
-
-        score++;
-
-        document.getElementById("finishBtn").classList.add("ready");
-
-    }else{
-
-        btn.classList.add("wrong");
-
-        document.getElementById("finalMsg").textContent =
-            "Almost! 😭 Complete B _ B Y.";
-    }
-}
+setupQuiz(
+    ".nickname",
+    "nicknameMessage",
+    "next4",
+    "Correct! 🧸 Baby — the cutest name for the cutest person. ❤️"
+);
 
 
-/* ================= FINISH ================= */
+/* FINAL */
 
-function finishGame(){
+setupQuiz(
+    ".finalLetter",
+    "finalMessage",
+    "finishButton",
+    "B + A + B + Y = BABY 💙 Final message unlocked!"
+);
 
-    showScreen("final");
 
-    // Tiny volume boost for ending
-    song.volume = 0.8;
-}
+/* =========================================
+   NEXT BUTTONS
+========================================= */
 
+document.getElementById("next1").addEventListener("click",function(){
+    showScreen("quiz2");
+});
 
-/* ================= PREVENT ACCIDENTAL RELOAD ================= */
+document.getElementById("next2").addEventListener("click",function(){
+    showScreen("quiz3");
+});
 
-window.addEventListener("beforeunload",function(){
+document.getElementById("next3").addEventListener("click",function(){
+    showScreen("quiz4");
+});
 
-    // Song naturally s
+document.getElementById("next4").addEventListener("click",function(){
+    showScreen("quiz5");
+});
+
+document.getElementById("finishButton").addEventListener("click",function(){
+    showScreen("finalScreen");
+    loveSong.volume = 0.8;
+});
+
+</script>
+
+</body>
+</html>
