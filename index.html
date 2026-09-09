@@ -2,135 +2,114 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Zeya 💙</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Zeya 💙 | Love Game</title>
 
 <style>
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
-}
-
-html,body{
-    width:100%;
-    min-height:100%;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
 body{
     min-height:100vh;
-    background:
-        radial-gradient(circle at 50% 15%,#123b68 0%,#071525 38%,#020914 80%);
-    color:white;
+    overflow:hidden;
     font-family:Arial,Helvetica,sans-serif;
-    overflow-x:hidden;
+    color:white;
+    background:
+      radial-gradient(circle at 50% 15%,#173e68 0%,#081a30 35%,#020712 78%);
 }
 
-/* BACKGROUND */
+/* ================= BACKGROUND ================= */
 
-.bg{
+#stars{
     position:fixed;
     inset:0;
     overflow:hidden;
     pointer-events:none;
-    z-index:0;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#d9f2ff;
+    box-shadow:0 0 10px #65bdff;
+    animation:twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:.15;transform:scale(.6)}
+    50%{opacity:1;transform:scale(1.5)}
 }
 
 .glow{
-    position:absolute;
-    width:320px;
-    height:320px;
+    position:fixed;
+    width:280px;
+    height:280px;
     border-radius:50%;
-    background:#1685ed;
-    opacity:.12;
-    filter:blur(90px);
+    filter:blur(100px);
+    opacity:.15;
+    pointer-events:none;
 }
 
-.glow1{
-    left:-160px;
-    top:5%;
+.g1{
+    background:#008cff;
+    left:-150px;
+    top:10%;
 }
 
-.glow2{
-    right:-160px;
-    bottom:5%;
+.g2{
+    background:#0066ff;
+    right:-150px;
+    bottom:0;
 }
 
-.dot{
-    position:absolute;
-    width:4px;
-    height:4px;
-    border-radius:50%;
-    background:#d8efff;
-    box-shadow:0 0 15px #5db5ff;
-    animation:blink 2s infinite;
-}
+/* ================= SCREEN ================= */
 
-.d1{left:10%;top:15%}
-.d2{left:25%;top:70%;animation-delay:.4s}
-.d3{left:50%;top:12%;animation-delay:.8s}
-.d4{left:78%;top:24%;animation-delay:1.2s}
-.d5{left:90%;top:60%;animation-delay:1.6s}
-.d6{left:68%;top:82%;animation-delay:.5s}
-
-@keyframes blink{
-    0%,100%{
-        opacity:.15;
-        transform:scale(.7);
-    }
-    50%{
-        opacity:1;
-        transform:scale(1.6);
-    }
-}
-
-/* PAGE */
-
-.page{
+.screen{
+    position:relative;
+    z-index:5;
     width:100%;
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:18px;
-    position:relative;
-    z-index:2;
+    padding:16px;
 }
-
-/* CARD */
 
 .card{
     width:100%;
     max-width:430px;
-    padding:32px 20px 25px;
+    padding:30px 20px 25px;
+    border-radius:30px;
     text-align:center;
 
-    border-radius:30px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.11),
+        rgba(255,255,255,.025)
+    );
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.10),
-            rgba(255,255,255,.025)
-        );
-
-    border:1px solid rgba(150,210,255,.20);
+    border:1px solid rgba(160,220,255,.22);
 
     box-shadow:
-        0 30px 90px rgba(0,0,0,.55),
-        inset 0 1px 0 rgba(255,255,255,.08);
+      0 30px 100px rgba(0,0,0,.65),
+      inset 0 1px 0 rgba(255,255,255,.08);
 
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
 
-    animation:appear .7s ease;
+    animation:cardIn .7s ease;
 }
 
-@keyframes appear{
+@keyframes cardIn{
     from{
         opacity:0;
-        transform:translateY(20px) scale(.95);
+        transform:translateY(25px) scale(.94);
     }
     to{
         opacity:1;
@@ -138,312 +117,343 @@ body{
     }
 }
 
-/* HEART */
+/* ================= START ================= */
 
-.big-heart{
-    width:105px;
-    height:105px;
+.logoHeart{
+    width:110px;
+    height:110px;
     margin:0 auto 22px;
-
     display:flex;
-    align-items:center;
     justify-content:center;
-
+    align-items:center;
     border-radius:50%;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(45,145,255,.35),
-            rgba(45,145,255,.04)
-        );
+    background:radial-gradient(
+        circle,
+        rgba(55,160,255,.38),
+        rgba(55,160,255,.03)
+    );
 
-    border:1px solid rgba(140,210,255,.25);
+    border:1px solid rgba(140,220,255,.25);
 
     box-shadow:
-        0 0 35px rgba(45,145,255,.25);
+      0 0 45px rgba(45,155,255,.25);
 
-    font-size:54px;
+    font-size:58px;
 
-    animation:heartBeat 1.8s infinite;
+    animation:heartbeat 1.7s infinite;
 }
 
-@keyframes heartBeat{
+@keyframes heartbeat{
     0%,100%{transform:scale(1)}
     50%{transform:scale(1.08)}
 }
 
-/* NAME */
-
 .name{
-    font-size:58px;
+    font-size:60px;
     font-weight:900;
     letter-spacing:2px;
-    margin-bottom:14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff,
-            #bce5ff,
-            #4da6ff
-        );
-
+    background:linear-gradient(
+        135deg,
+        #fff,
+        #c5ebff,
+        #48a8ff
+    );
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
-/* TEXT */
-
-.subtitle{
-    color:#9ab5ca;
+.tagline{
+    color:#9dbbd0;
     font-size:12px;
     line-height:1.8;
     letter-spacing:1px;
-    margin-bottom:28px;
+    margin:12px 0 28px;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 
-.start-button{
+.btn{
     width:100%;
     max-width:280px;
-    height:62px;
+    height:60px;
 
-    border:none;
+    border:0;
     border-radius:18px;
 
     color:white;
-
-    font-size:13px;
+    font-size:12px;
     font-weight:900;
-    letter-spacing:4px;
+    letter-spacing:3px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #1373d0,
-            #49a5ff
-        );
+    background:linear-gradient(
+        135deg,
+        #0968c9,
+        #51afff
+    );
 
     box-shadow:
-        0 12px 35px rgba(45,145,255,.35),
-        inset 0 1px 0 rgba(255,255,255,.35);
+      0 12px 35px rgba(25,140,255,.35),
+      inset 0 1px 0 rgba(255,255,255,.35);
 
     cursor:pointer;
-    transition:.25s;
+    transition:.2s;
 }
 
-.start-button:hover{
-    transform:translateY(-3px);
-    box-shadow:
-        0 18px 45px rgba(45,145,255,.5);
+.btn:active{
+    transform:scale(.94);
 }
-
-.start-button:active{
-    transform:scale(.95);
-}
-
-/* CREATOR */
 
 .creator{
-    margin-top:25px;
-    color:#526c82;
+    margin-top:24px;
+    color:#526c80;
     font-size:8px;
-    font-weight:800;
     letter-spacing:1.5px;
 }
 
-.creator a{
-    color:#83b8df;
-    text-decoration:none;
+.creator span{
+    color:#83bce5;
 }
 
-/* GAME */
+/* ================= GAME ================= */
 
-.game-title{
-    font-size:30px;
+#gameScreen{
+    display:none;
+}
+
+.gameCard{
+    width:100%;
+    max-width:500px;
+}
+
+.gameHeader{
+    text-align:center;
+    margin-bottom:14px;
+}
+
+.gameTitle{
+    font-size:29px;
     font-weight:900;
-    margin-bottom:7px;
-
-    background:
-        linear-gradient(135deg,#fff,#4da6ff);
-
+    background:linear-gradient(
+        135deg,#fff,#52afff
+    );
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
-.game-info{
-    color:#9db9ce;
-    font-size:11px;
-    margin-bottom:14px;
-    line-height:1.7;
+.gameSub{
+    color:#9cb8cd;
+    font-size:10px;
+    margin-top:7px;
 }
 
-.score{
-    display:inline-block;
-    padding:9px 18px;
-    margin-bottom:15px;
+.stats{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    margin:14px 0;
+}
 
-    border-radius:30px;
+.stat{
+    flex:1;
+    padding:10px 5px;
+    border-radius:15px;
 
-    background:rgba(77,166,255,.10);
-    border:1px solid rgba(77,166,255,.25);
+    background:rgba(80,170,255,.08);
+    border:1px solid rgba(100,190,255,.15);
 
-    color:#a9dcff;
-    font-size:12px;
+    color:#aee0ff;
+    font-size:11px;
     font-weight:bold;
 }
 
-/* GAME AREA */
+.stat b{
+    display:block;
+    color:white;
+    font-size:17px;
+    margin-top:3px;
+}
+
+/* GAME FIELD */
 
 #gameArea{
     position:relative;
     width:100%;
-    height:330px;
+    height:390px;
 
     overflow:hidden;
-
-    border-radius:22px;
+    border-radius:25px;
 
     background:
-        radial-gradient(
-            circle at center,
-            rgba(45,145,255,.15),
-            rgba(0,0,0,.22)
-        );
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(31,128,220,.16),
+        rgba(0,0,0,.28)
+      );
 
-    border:1px solid rgba(120,200,255,.20);
+    border:1px solid rgba(120,200,255,.18);
 
-    margin-bottom:20px;
+    box-shadow:
+      inset 0 0 40px rgba(0,0,0,.25);
+
+    touch-action:manipulation;
 }
 
-/* MOVING HEART */
+/* CENTER MESSAGE */
 
-.game-heart{
+.gameHint{
     position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:85%;
+
+    color:#6f91a9;
+    font-size:11px;
+    line-height:1.7;
+    text-align:center;
+
+    pointer-events:none;
+}
+
+/* HEART */
+
+.target{
+    position:absolute;
+    z-index:10;
+
+    width:58px;
+    height:58px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
 
     font-size:34px;
 
     cursor:pointer;
     user-select:none;
 
-    filter:
-        drop-shadow(0 0 10px rgba(75,170,255,.9));
+    background:rgba(50,150,255,.12);
+
+    box-shadow:
+      0 0 25px rgba(65,170,255,.55);
 
     animation:
-        floatHeart 1.2s infinite alternate;
+      targetFloat 1s infinite alternate ease-in-out;
 }
 
-@keyframes floatHeart{
-    from{transform:scale(.85) rotate(-8deg)}
-    to{transform:scale(1.15) rotate(8deg)}
+@keyframes targetFloat{
+    from{
+        transform:scale(.88) rotate(-5deg);
+    }
+    to{
+        transform:scale(1.08) rotate(5deg);
+    }
 }
 
-/* SUCCESS */
+.target:active{
+    transform:scale(1.5);
+}
 
-.success{
+/* SCORE POP */
+
+.pop{
+    position:absolute;
+    z-index:20;
+    pointer-events:none;
+
+    color:#c7edff;
     font-size:18px;
-    font-weight:bold;
-    color:#aee1ff;
+    font-weight:900;
 
-    margin:12px 0 20px;
+    animation:popUp .7s forwards;
 }
 
-/* PHOTO GALLERY */
+@keyframes popUp{
+    from{
+        opacity:1;
+        transform:translateY(0) scale(.8);
+    }
+    to{
+        opacity:0;
+        transform:translateY(-55px) scale(1.2);
+    }
+}
 
-.memories-title{
-    font-size:36px;
+/* COMBO */
+
+.combo{
+    height:18px;
+    margin-top:10px;
+
+    color:#75c7ff;
+    font-size:10px;
+    font-weight:bold;
+}
+
+/* ROMANTIC MESSAGE */
+
+.message{
+    min-height:42px;
+    margin:10px auto 12px;
+
+    color:#c2e7ff;
+    font-size:11px;
+    line-height:1.6;
+    font-style:italic;
+}
+
+/* ================= FINAL ================= */
+
+#finalScreen{
+    display:none;
+}
+
+.finalHeart{
+    font-size:70px;
+    margin-bottom:12px;
+    animation:heartbeat 1.5s infinite;
+}
+
+.finalTitle{
+    font-size:35px;
     font-weight:900;
-    margin-bottom:8px;
-
-    background:
-        linear-gradient(135deg,#fff,#4da6ff);
-
+    background:linear-gradient(
+        135deg,#fff,#57b1ff
+    );
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
-.memory-text{
-    color:#9db9ce;
-    font-size:11px;
-    line-height:1.8;
-    margin-bottom:20px;
-}
-
-/* PHOTOS */
-
-.gallery{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-    margin-bottom:22px;
-}
-
-.photo{
-    width:100%;
-    height:180px;
-
-    object-fit:cover;
-
-    border-radius:18px;
-
-    border:1px solid rgba(140,210,255,.25);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.45);
-
-    transition:.3s;
-
-    cursor:pointer;
-}
-
-.photo:hover{
-    transform:scale(1.03);
-}
-
-/* BIG PHOTO */
-
-.big-photo{
-    width:100%;
-    height:310px;
-
-    object-fit:cover;
-
-    border-radius:22px;
-
-    border:1px solid rgba(140,210,255,.25);
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.5);
-
-    margin-bottom:20px;
+.finalText{
+    color:#a9c5d8;
+    font-size:12px;
+    line-height:2;
+    margin:20px 5px 25px;
 }
 
 /* MOBILE */
 
 @media(max-width:450px){
 
-    .card{
-        padding:28px 16px 23px;
-    }
-
     .name{
         font-size:52px;
     }
 
-    .game-title{
-        font-size:27px;
+    .card{
+        padding:26px 16px 22px;
     }
 
     #gameArea{
-        height:300px;
+        height:360px;
     }
 
-    .photo{
-        height:155px;
+    .gameTitle{
+        font-size:27px;
     }
-
 }
 </style>
 </head>
@@ -452,33 +462,26 @@ body{
 
 <!-- BACKGROUND -->
 
-<div class="bg">
-    <div class="glow glow1"></div>
-    <div class="glow glow2"></div>
+<div id="stars"></div>
 
-    <div class="dot d1"></div>
-    <div class="dot d2"></div>
-    <div class="dot d3"></div>
-    <div class="dot d4"></div>
-    <div class="dot d5"></div>
-    <div class="dot d6"></div>
-</div>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
 
 
 <!-- MUSIC -->
 
-<audio id="loveSong" loop>
+<audio id="loveSong" loop preload="auto">
     <source src="sahil%20love.mp3" type="audio/mpeg">
 </audio>
 
 
-<!-- START SCREEN -->
+<!-- ================= START SCREEN ================= -->
 
-<div class="page" id="startScreen">
+<section class="screen" id="startScreen">
 
     <div class="card">
 
-        <div class="big-heart">
+        <div class="logoHeart">
             💙
         </div>
 
@@ -486,340 +489,579 @@ body{
             Zeya
         </div>
 
-        <div class="subtitle">
-            A Little Surprise<br>
-            Made Just For You ✨
+        <div class="tagline">
+            I made a tiny universe<br>
+            where every heart leads to you. ✨
         </div>
 
-        <button
-            class="start-button"
-            onclick="startGame()">
-
-            START ❤️
-
+        <button class="btn" onclick="startLoveGame()">
+            START OUR STORY ❤️
         </button>
 
         <div class="creator">
-            Created by
-            <a
-                href="https://www.instagram.com/be.like_sahil/"
-                target="_blank">
-                @be.like_sahil
-            </a>
+            CREATED WITH LOVE BY
+            <span>@be.like_sahil</span>
         </div>
 
     </div>
 
-</div>
+</section>
 
 
-<!-- GAME SCREEN -->
+<!-- ================= GAME ================= -->
 
-<div
-    class="page"
-    id="gameScreen"
-    style="display:none;">
+<section class="screen" id="gameScreen">
 
-    <div class="card">
+    <div class="card gameCard">
 
-        <div class="game-title">
-            Catch My Hearts 💙
-        </div>
+        <div class="gameHeader">
 
-        <div class="game-info">
-            Catch 5 hearts to unlock<br>
-            Zeya's beautiful memories ✨
-        </div>
+            <div class="gameTitle">
+                CATCH MY LOVE 💙
+            </div>
 
-        <div class="score">
-            Hearts: <span id="score">0</span> / 5
-        </div>
-
-        <div id="gameArea"></div>
-
-        <div
-            id="success"
-            class="success"
-            style="display:none;">
-
-            You did it! 🥹💙
+            <div class="gameSub">
+                Catch every blue heart before time runs out.
+            </div>
 
         </div>
 
-        <button
-            id="continueButton"
-            class="start-button"
-            style="display:none;"
-            onclick="showMemories()">
 
-            UNLOCK MEMORIES ✨
+        <div class="stats">
 
-        </button>
+            <div class="stat">
+                SCORE
+                <b id="score">0</b>
+            </div>
 
-        <div class="creator">
-            Created by
-            <a
-                href="https://www.instagram.com/be.like_sahil/"
-                target="_blank">
-                @be.like_sahil
-            </a>
-        </div>
+            <div class="stat">
+                TIME
+                <b id="timer">30</b>
+            </div>
 
-    </div>
-
-</div>
-
-
-<!-- MEMORIES SCREEN -->
-
-<div
-    class="page"
-    id="memoriesScreen"
-    style="display:none;">
-
-    <div class="card">
-
-        <div class="memories-title">
-            Zeya 💙
-        </div>
-
-        <div class="memory-text">
-            A few beautiful memories... ✨<br><br>
-
-            Favourite Food 🍫 Chocolate<br>
-            Favourite Food 🍜 Maggie<br>
-            Favourite Colour 💙 Blue<br>
-            Birthday 🌸 March<br>
-            Favourite Song 🎵 Ishq Ke Jaan
-        </div>
-
-        <div class="gallery">
-
-            <img
-                class="photo"
-                src="zeya1.jpg"
-                alt="Zeya memory">
-
-            <img
-                class="photo"
-                src="zeya2.jpg"
-                alt="Zeya memory">
-
-            <img
-                class="photo"
-                src="zeya3.jpg"
-                alt="Zeya memory">
-
-            <img
-                class="photo"
-                src="zeya4.jpg"
-                alt="Zeya memory">
+            <div class="stat">
+                BEST
+                <b id="best">0</b>
+            </div>
 
         </div>
 
-        <button
-            class="start-button"
-            onclick="showFinal()">
 
-            ONE MORE ✨
+        <div id="gameArea">
 
-        </button>
+            <div class="gameHint" id="gameHint">
+                Every heart you catch<br>
+                unlocks another little piece of my love. 💙
+            </div>
 
-        <div class="creator">
-            Created by
-            <a
-                href="https://www.instagram.com/be.like_sahil/"
-                target="_blank">
-                @be.like_sahil
-            </a>
+        </div>
+
+
+        <div class="combo" id="combo">
+            READY? 💙
+        </div>
+
+        <div class="message" id="message">
+            Find the heart... ✨
         </div>
 
     </div>
 
-</div>
+</section>
 
 
-<!-- FINAL SCREEN -->
+<!-- ================= FINAL ================= -->
 
-<div
-    class="page"
-    id="finalScreen"
-    style="display:none;">
+<section class="screen" id="finalScreen">
 
     <div class="card">
 
-        <div class="big-heart">
+        <div class="finalHeart">
             💙
         </div>
 
-        <div class="game-title">
-            For Zeya 🥹
+        <div class="finalTitle">
+            You Found My Heart
         </div>
 
-        <div class="memory-text">
+        <div class="finalText" id="finalText">
+            You caught every little heart... 🥹<br><br>
 
-            Some people are just special...<br><br>
+            Maybe the real game was never about
+            catching hearts.<br><br>
 
-            And you are one of them. 💙<br><br>
+            It was about finding the one person
+            who already had mine. 💙<br><br>
 
-            No matter how many memories we make,<br>
-            there will always be another one<br>
-            waiting to be created. ✨
-
+            <b>Zeya, this little world is yours. ✨</b>
         </div>
 
-        <img
-            class="big-photo"
-            src="zeya1.jpg"
-            alt="Zeya">
-
-        <button
-            class="start-button"
-            onclick="location.reload()">
-
-            START AGAIN ↻
-
+        <button class="btn" onclick="playAgain()">
+            PLAY AGAIN ↻
         </button>
 
         <div class="creator">
-            Created by
-            <a
-                href="https://www.instagram.com/be.like_sahil/"
-                target="_blank">
-                @be.like_sahil
-            </a>
+            CREATED WITH LOVE BY
+            <span>@be.like_sahil</span>
         </div>
 
     </div>
 
-</div>
+</section>
 
 
 <script>
 
-/* MUSIC */
+/* =====================================================
+   STARS
+===================================================== */
 
-function startMusic(){
+const stars = document.getElementById("stars");
 
-    const song =
-        document.getElementById("loveSong");
+for(let i=0;i<55;i++){
 
-    song.volume = 0.75;
+    const star = document.createElement("div");
 
-    song.play().catch(function(error){
-        console.log("Audio error:",error);
-    });
+    star.className="star";
+
+    star.style.left =
+        Math.random()*100+"%";
+
+    star.style.top =
+        Math.random()*100+"%";
+
+    star.style.animationDelay =
+        Math.random()*3+"s";
+
+    star.style.opacity =
+        Math.random();
+
+    stars.appendChild(star);
 }
 
 
-/* START */
+/* =====================================================
+   MUSIC
+===================================================== */
 
-function startGame(){
+const song =
+    document.getElementById("loveSong");
 
-    startMusic();
+function playMusic(){
+
+    song.volume=.75;
+
+    const promise=song.play();
+
+    if(promise !== undefined){
+
+        promise.catch(()=>{
+            console.log("Music waiting for user interaction.");
+        });
+
+    }
+}
+
+
+/* =====================================================
+   GAME VARIABLES
+===================================================== */
+
+let score=0;
+let time=30;
+let combo=0;
+
+let timerInterval=null;
+let heartTimeout=null;
+let gameRunning=false;
+
+let bestScore =
+    Number(localStorage.getItem("zeyaBestScore") || 0);
+
+document.getElementById("best").innerText =
+    bestScore;
+
+
+/* =====================================================
+   ROMANTIC MESSAGES
+===================================================== */
+
+const messages=[
+
+    "Every heart says: I choose you. 💙",
+
+    "You make ordinary moments feel special. ✨",
+
+    "Somewhere between everything and nothing... it's always you. 🥹",
+
+    "One heart caught. One more reason to smile. 💙",
+
+    "If love had a colour, ours would be blue. 🌌",
+
+    "You are my favourite notification. 💌",
+
+    "My heart knows your name without being asked. ❤️",
+
+    "Another heart for the person who has mine. 💙",
+
+    "Distance means nothing when someone means everything. ✨",
+
+    "You found another piece of my heart. 🥹",
+
+    "There is no finish line when it comes to loving you. 💙",
+
+    "Zeya... you are the special part of this story. 🌙"
+
+];
+
+
+/* =====================================================
+   START GAME
+===================================================== */
+
+function startLoveGame(){
+
+    playMusic();
 
     document.getElementById("startScreen")
         .style.display="none";
 
+    document.getElementById("finalScreen")
+        .style.display="none";
+
     document.getElementById("gameScreen")
         .style.display="flex";
 
-    createHeart();
+    score=0;
+    time=30;
+    combo=0;
+    gameRunning=true;
+
+    document.getElementById("score")
+        .innerText=score;
+
+    document.getElementById("timer")
+        .innerText=time;
+
+    document.getElementById("combo")
+        .innerText="CATCH THE HEARTS! 💙";
+
+    document.getElementById("message")
+        .innerText=messages[0];
+
+    document.getElementById("gameHint")
+        .style.display="none";
+
+    clearInterval(timerInterval);
+    clearTimeout(heartTimeout);
+
+    spawnHeart();
+
+    timerInterval=setInterval(()=>{
+
+        time--;
+
+        document.getElementById("timer")
+            .innerText=time;
+
+        if(time<=0){
+
+            endGame();
+
+        }
+
+    },1000);
 }
 
 
-/* GAME */
+/* =====================================================
+   SPAWN HEART
+===================================================== */
 
-let score = 0;
+function spawnHeart(){
 
-function createHeart(){
+    if(!gameRunning)return;
 
     const area =
         document.getElementById("gameArea");
 
+    /* remove old target */
+
+    const old =
+        area.querySelector(".target");
+
+    if(old)old.remove();
+
+
     const heart =
         document.createElement("div");
 
-    heart.className="game-heart";
+    heart.className="target";
 
     heart.innerHTML="💙";
 
+
     const maxX =
-        area.clientWidth - 45;
+        Math.max(5,area.clientWidth-65);
 
     const maxY =
-        area.clientHeight - 45;
+        Math.max(5,area.clientHeight-65);
 
-    const x =
-        Math.random()*maxX;
 
-    const y =
-        Math.random()*maxY;
+    heart.style.left =
+        (5+Math.random()*Math.max(1,maxX-5))+"px";
 
-    heart.style.left=x+"px";
-    heart.style.top=y+"px";
+    heart.style.top =
+        (5+Math.random()*Math.max(1,maxY-5))+"px";
 
-    heart.onclick=function(){
 
-        score++;
+    heart.onclick=function(e){
 
-        document.getElementById("score")
-            .innerText=score;
+        e.stopPropagation();
 
-        heart.remove();
-
-        if(score >= 5){
-
-            gameComplete();
-
-        }else{
-
-            createHeart();
-
-        }
+        catchHeart(heart);
 
     };
 
+
     area.appendChild(heart);
+
+
+    /* Heart moves automatically */
+
+    heartTimeout=setTimeout(()=>{
+
+        if(gameRunning){
+
+            combo=0;
+
+            document.getElementById("combo")
+                .innerText="DON'T LET IT ESCAPE 💙";
+
+            spawnHeart();
+
+        }
+
+    },1500);
 }
 
 
-/* GAME COMPLETE */
+/* =====================================================
+   CATCH HEART
+===================================================== */
 
-function gameComplete(){
+function catchHeart(heart){
 
-    document.getElementById("gameArea")
-        .innerHTML="";
+    if(!gameRunning)return;
 
-    document.getElementById("success")
-        .style.display="block";
+    clearTimeout(heartTimeout);
 
-    document.getElementById("continueButton")
-        .style.display="inline-block";
+    score++;
+    combo++;
+
+    heart.remove();
+
+
+    document.getElementById("score")
+        .innerText=score;
+
+
+    /* combo text */
+
+    if(combo>=5){
+
+        document.getElementById("combo")
+            .innerText="LOVE COMBO ×"+combo+" 🔥";
+
+    }else{
+
+        document.getElementById("combo")
+            .innerText="LOVE COMBO ×"+combo+" 💙";
+
+    }
+
+
+    /* random romantic message */
+
+    const randomMessage =
+        messages[
+            Math.floor(
+                Math.random()*messages.length
+            )
+        ];
+
+    document.getElementById("message")
+        .innerText=randomMessage;
+
+
+    /* score pop */
+
+    createPop(heart.offsetLeft,heart.offsetTop);
+
+
+    /* win */
+
+    if(score>=10){
+
+        finishGame();
+        return;
+
+    }
+
+
+    /* faster after every catch */
+
+    setTimeout(()=>{
+        spawnHeart();
+    },120);
+
 }
 
 
-/* MEMORIES */
+/* =====================================================
+   SCORE POP
+===================================================== */
 
-function showMemories(){
+function createPop(x,y){
 
-    document.getElementById("gameScreen")
-        .style.display="none";
+    const area =
+        document.getElementById("gameArea");
 
-    document.getElementById("memoriesScreen")
-        .style.display="flex";
+    const pop =
+        document.createElement("div");
+
+    pop.className="pop";
+
+    pop.innerText="+1 💙";
+
+    pop.style.left=x+"px";
+    pop.style.top=y+"px";
+
+    area.appendChild(pop);
+
+    setTimeout(()=>{
+        pop.remove();
+    },700);
 }
 
 
-/* FINAL */
+/* =====================================================
+   FINISH
+===================================================== */
 
-function showFinal(){
+function finishGame(){
 
-    document.getElementById("memoriesScreen")
-        .style.display="none";
+    gameRunning=false;
+
+    clearInterval(timerInterval);
+    clearTimeout(heartTimeout);
+
+    const old =
+        document.querySelector(".target");
+
+    if(old)old.remove();
+
+
+    if(score>bestScore){
+
+        bestScore=score;
+
+        localStorage.setItem(
+            "zeyaBestScore",
+            bestScore
+        );
+
+    }
+
+
+    setTimeout(()=>{
+
+        document.getElementById("gameScreen")
+            .style.display="none";
+
+        document.getElementById("finalScreen")
+            .style.display="flex";
+
+        document.getElementById("finalText")
+            .innerHTML=
+            "You caught all 10 hearts... 🥹💙<br><br>"+
+            "Maybe the real game was never about "+
+            "catching hearts.<br><br>"+
+            "It was about finding the one person "+
+            "who already had mine. 💙<br><br>"+
+            "<b>Zeya, you found my heart. ✨</b>";
+
+    },500);
+}
+
+
+/* =====================================================
+   TIME OUT
+===================================================== */
+
+function endGame(){
+
+    if(!gameRunning)return;
+
+    gameRunning=false;
+
+    clearInterval(timerInterval);
+    clearTimeout(heartTimeout);
+
+    const old =
+        document.querySelector(".target");
+
+    if(old)old.remove();
+
+
+    setTimeout(()=>{
+
+        document.getElementById("message")
+            .innerText=
+            "Time's up... but my love isn't. 💙";
+
+        if(score>bestScore){
+
+            bestScore=score;
+
+            localStorage.setItem(
+                "zeyaBestScore",
+                bestScore
+            );
+
+        }
+
+        document.getElementById("gameScreen")
+            .style.display="none";
+
+        document.getElementById("finalScreen")
+            .style.display="flex";
+
+        document.getElementById("finalText")
+            .innerHTML=
+            "You caught <b>"+score+
+            "</b> hearts. 💙<br><br>"+
+            "But don't worry...<br>"+
+            "my heart isn't going anywhere. 🥹<br><br>"+
+            "<b>Try again and catch all 10. ✨</b>";
+
+    },500);
+}
+
+
+/* =====================================================
+   PLAY AGAIN
+===================================================== */
+
+function playAgain(){
 
     document.getElementById("finalScreen")
+        .style.display="none";
+
+    document.getElementById("gameScreen")
         .style.display="flex";
+
+    startLoveGame();
 }
 
 </script>
