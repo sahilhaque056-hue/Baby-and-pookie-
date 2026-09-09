@@ -1,1 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+:root {
+    --blue: #4da6ff;
+    --light-blue: #8dccff;
+    --dark: #06111f;
+    --white: #ffffff;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    background:
+        radial-gradient(circle at 50% 35%, rgba(77, 166, 255, 0.20), transparent 32%),
+        radial-gradient(circle at 20% 80%, rgba(141, 204, 255, 0.10), transparent 30%),
+        #020812;
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+/* Main screen */
+
+.start-screen {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    position: relative;
+}
+
+/* Glow */
+
+.start-screen::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: rgba(77, 166, 255, 0.10);
+    filter: blur(55px);
+    animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+/* Heart */
+
+.heart {
+    position: relative;
+    font-size: 58px;
+    margin-bottom: 18px;
+    filter: drop-shadow(0 0 18px rgba(77, 166, 255, 0.7));
+    animation: heartBeat 1.7s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.13);
+    }
+}
+
+/* Title */
+
+h1 {
+    position: relative;
+    font-size: clamp(42px, 13vw, 70px);
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #8dccff,
+        #4da6ff
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 0 35px rgba(77, 166, 255, 0.25);
+}
+
+/* Subtitle */
+
+.subtitle {
+    position: relative;
+    color: #9db4ca;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 34px;
+}
+
+/* Start button */
+
+.start-button {
+    position: relative;
+    width: 190px;
+    height: 58px;
+
+    border: 1px solid rgba(141, 204, 255, 0.45);
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #247ed1,
+        #4da6ff
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 25px rgba(77, 166, 255, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    transition: 0.25s ease;
+}
+
+.start-button span {
+    margin-left: 8px;
+}
+
+.start-button:hover {
+    transform: translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 0 35px rgba(77, 166, 255, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.start-button:active {
+    transform: scale(0.96);
+}
+
+/* Creator */
+
+.creator {
+    position: absolute;
+    bottom: 18px;
+
+    color: #53687b;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.creator a {
+    color: #719cc2;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.creator a:hover {
+    color: #8dccff;
+    text-shadow: 0 0 10px rgba(77, 166, 255, 0.7);
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+    .heart {
+        font-size: 52px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        margin-bottom: 30px;
+    }
+
+    .start-button {
+        width: 175px;
+        height: 55px;
+    }
+}
